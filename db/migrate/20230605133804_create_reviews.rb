@@ -4,8 +4,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :title,  null: false
       t.text :body,  null: false
       t.integer :price,  null: false
-      t.integer :prefecture_id,  null: false
-      t.integer :food_id,  null: false
+      t.integer :prefecture,  null: false, default: 0
+      t.integer :food_category,  null: false, default: 0
       t.timestamps
     end
   end

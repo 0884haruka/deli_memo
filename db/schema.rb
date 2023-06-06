@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_075550) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "foods", force: :cascade do |t|
-    t.integer "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "like"
     t.datetime "created_at", precision: 6, null: false
@@ -55,18 +49,12 @@ ActiveRecord::Schema.define(version: 2023_06_06_075550) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "prefectures", force: :cascade do |t|
-    t.integer "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.integer "price", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "food_id", null: false
+    t.integer "prefecture", default: 0, null: false
+    t.integer "food_category", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
