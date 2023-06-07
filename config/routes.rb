@@ -3,17 +3,19 @@ Rails.application.routes.draw do
   get "about" => "homes#about", as: "about"
   resources :comments, only: [:index, :show]
   resource :members, only: [:edit, :update]
-  get '/mypage' => 'members#show'
   # get '/reviews' => 'reviews#index'
   # get '/review_comments' => 'comments#create'
   # get '/new_review' => 'reviews#new'
 
 
-  namespace :public do
+
+  scope module: :public do
     resources :reviews do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    # post '/members/sign_up' => 'members#sign_up', as: 'members_sign_up'
+    get '/mypage' => 'members#show', as: 'mypage'
   end
 
 
