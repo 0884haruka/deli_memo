@@ -1,2 +1,51 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>最新のレビュー</h2>
+      </div>
+      <%= form_with model: @review do |f| %>
+        <table>
+          <tr>
+            <th>お取り寄せ画像</th>
+            <td><%= f.file_field :item_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th>お取り寄せ商品名</th>
+            <td><%= f.text_field :item_name, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>お取り寄せ商品レビュー</th>
+            <td><%= f.text_area :item_explanation, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>地域</th>
+            <td><%= f.select :prefecture, Review.prefectures.keys, {} %></td>
+          </tr>
+          <tr>
+            <th>食品ジャンル</th>
+            <td><%= f.select :food_category, Review.food_categorys.keys, {} %></td>
+          </tr>
+          <tr>
+            <th>税込価格</th>
+            <td><%= f.text_field :price, class: "custom-input" %>円</td>
+          </tr>
+          <tr>
+            <th>掲載ステータス</th>
+            <td>
+              <%= f.label :sales_status_on_sale, '掲載する' %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :sales_status_draft, '掲載しない' %>
+              <%= f.radio_button :is_active, :false, checked: true %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit '新規登録', class: "btn custom-button" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+
+  </div>
+</div>
