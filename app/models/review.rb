@@ -1,8 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :member
   has_one_attached :review_image
-  
-  
+
+
   enum prefecture:{
     "都道府県を選択ください":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -15,14 +15,14 @@ class Review < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
     沖縄県:47
   }
-   
+
   enum food_category:{
     "カテゴリを選択ください":0,
     肉・肉加工品:1,魚介類・魚加工品:2,野菜・野菜加工品:3,乳製品・チーズ:4,
-    スイーツ和菓子:5,豆腐豆加工品:6,麺類パン米:7,漬物ふりかけ:8,
+    スイーツ・和菓子:5,豆腐・豆加工品:6,麺類・パン・米:7,漬物・ふりかけ:8,
     調味料:9,お惣菜:10
   }
-  
+
   def get_review_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
@@ -30,5 +30,5 @@ class Review < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-   
+
 end
