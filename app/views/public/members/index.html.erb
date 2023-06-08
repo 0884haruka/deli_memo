@@ -1,0 +1,56 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-2">
+        <h2>最新のレビュー</h2>
+      </div>
+      <div class="col-md-6 offset-md-1">
+    <ul style="list-style: none;">
+      <li>
+        <%= link_to new_review_path, class: "btn custom-button" do %>
+          <i class="fas fa-plus"></i>
+          レビューの新規投稿はこちら
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <h2 class="mt-3">レビュー一覧</h2>
+  <table class="table table-hover">
+    <tr>
+      <th class="custom-header"></th>
+      <th class="custom-header">商品名</th>
+      <th class="custom-header">レビュー内容</th>
+      <th class="custom-header">お値段</th>
+      <th class="custom-header">地域</th>
+      <th class="custom-header">食品カテゴリー</th>
+      <th class="custom-header">掲載の有無</th>
+    </tr>
+    <% @reviews.each do |review| %>
+     <tr>
+      <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
+      <td><%= review.title %></td>
+      <td><%= review.body %></td>
+      <td><%= review.price%>円</td>
+      <td><%= review.prefecture %></td>
+      <td><%= review.food_category%></td>
+      <td>
+        <% if review.is_active == true %>
+          掲載
+        <% end %>
+        <% if review.is_active == false %>
+          未掲載
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </table>
+  <!--<div class="d-flex justify-content-center custom-pagination">-->
+  <!--  <!%= paginate @items, class: "custom-pagination" %>-->
+  <!--</div>-->
+      <div class="col-md-2 offset-md-1">
+        <h2>フォロー</h2>
+        <h2 class="mt-3">フォロワー</h2>
+      </div>
+
+  </div>
+</div>

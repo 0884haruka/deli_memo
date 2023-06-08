@@ -5,5 +5,4 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :comments, dependent: :destroy
-  has_one_attached :review_image
 end

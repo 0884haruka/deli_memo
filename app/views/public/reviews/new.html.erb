@@ -8,23 +8,23 @@
         <table>
           <tr>
             <th>お取り寄せ画像</th>
-            <td><%= f.file_field :item_image, accept: "image/*" %></td>
+            <td><%= f.file_field :review_image, accept: "image/*" %></td>
           </tr>
           <tr>
             <th>お取り寄せ商品名</th>
-            <td><%= f.text_field :item_name, class: "custom-input" %></td>
+            <td><%= f.text_field :title, class: "custom-input" %></td>
           </tr>
           <tr>
             <th>お取り寄せ商品レビュー</th>
-            <td><%= f.text_area :item_explanation, class: "custom-input" %></td>
+            <td><%= f.text_area :body, class: "custom-input" %></td>
           </tr>
           <tr>
             <th>地域</th>
-            <td><%= f.select :prefecture, Review.prefectures.keys, {} %></td>
+            <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {} %></td>
           </tr>
           <tr>
             <th>食品ジャンル</th>
-            <td><%= f.select :food_category, Review.food_categorys.keys, {} %></td>
+            <td><%= f.select :food_category, Review.food_categories.keys.to_a, {} %></td>
           </tr>
           <tr>
             <th>税込価格</th>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td>
-              <%= f.submit '新規登録', class: "btn custom-button" %>
+              <%= f.submit 'Create Review!', class: "btn custom-button" %>
             </td>
           </tr>
         </table>

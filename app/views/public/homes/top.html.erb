@@ -1,0 +1,36 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-2">
+        Deli Ranking
+      </div>
+      <div class="col-md-6 offset-md-1">
+        デリデリ
+
+        <h2 class="mt-3">New review</h2>
+        <div class="mx-auto">
+            <div class="row">
+              <% @reviews.each do || %>
+                <div class="col-3 fadein txt0<%= @k %>">
+                  <%= link_to item_path(item.id), class: "text-decoration-none" do %>
+                    <div class="card text-dark tr-color h-100 bg-transparent border-0">
+                      <%= image_tag item.get_image(238,238), class: "card-img-top rounded-circle" %>
+                      <div class="card-body">
+                        <h6 class="card-title text-truncate"><%= item.item_name %></h6>
+                        <p class="card-text text-truncate">
+                          ¥<%= number_with_delimiter(item.price) %>
+                          (¥<%= number_with_delimiter(item.tax_included_price) %>)
+                        </p>
+                      </div>
+                    </div>
+                    <% @k += 1 %>
+                  <% end %>
+                </div>
+              <% end %>
+      </div>
+      <div class="col-md-2 offset-md-1">
+        ♡いいね♡Ranking
+      </div>
+
+  </div>
+</div>
