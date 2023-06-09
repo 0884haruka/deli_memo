@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get "about" => "public/homes#about", as: "about"
   resources :comments, only: [:index, :show]
-  resource :members, only: [:edit, :update]
+  resource :members, only: [:index, :show, :edit, :update]
 
   scope module: :public do
     resources :reviews do

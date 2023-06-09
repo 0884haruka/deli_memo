@@ -1,0 +1,50 @@
+<p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        \\編集ページ!!//
+        <%= form_with model: @review,  method: :patch do |review| %>
+        <table>
+          <tr>
+            <th>商品画像</th>
+            <!--<td><!%= f.file_field :review_image, accept: "image/*" %></td>-->
+          </tr>
+          <tr>
+            <th>商品名</th>
+            <td><%= f.text_field :title, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>レビュー内容</th>
+            <td><%= f.text_area :body, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>お値段</th>
+            <td><%= f.select :price, class: "custom-input" %>円</td>
+          </tr>
+          <tr>
+            <th>地域</th>
+            <td><%= f.text_field :prefecture, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>カテゴリー</th>
+            <td><%= f.text_field :food_categor, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <%= f.label :is_active, '掲載' %>
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, '未掲載' %>
+              <%= f.radio_button :is_active, false %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit '変更を保存', class:"btn custom-button" %>
+            </td>
+          </tr>
+        </table>
+        <% end %>
+      </div>
+    </div>
+  </div>

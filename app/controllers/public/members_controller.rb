@@ -1,6 +1,9 @@
 class Public::MembersController < ApplicationController
   def index
-    @reviews = Review.all
+    # @member = Member.find(params[:id])
+    # @members = @member.images
+    @reviews = Review.order('id DESC').limit(5)
+    @current_time = Time.current
   end
 
   def sign_up
@@ -9,5 +12,7 @@ class Public::MembersController < ApplicationController
   def show
   end
 
+  def edit
+  end
 
 end

@@ -1,2 +1,51 @@
-<h1>Public::Reviews#show</h1>
-<p>Find me in app/views/public/reviews/show.html.erb</p>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="mt-3">review details</h2>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
+    </div>
+    <div class="col-md-8"></div>  
+      <table class="table t-bordered">
+      <!--<table class="table table-hover">どちらにしようか考え中-->  
+        <tr>
+          <td>商品名</td>
+          <td><%= @review.title %></td>
+        </tr>
+        <tr>
+          <td>レビュー内容</td>
+          <td><%= @review.body %></td>
+        </tr>
+        <tr>
+          <td>お値段（税込）</td>
+          <td><%= @review.price%>円</td>
+        </tr>
+        <tr>
+          <td>地域</td>
+          <td><%= @review.prefecture %></td>
+        </tr>
+        <tr>
+          <td>食品カテゴリー</td>
+          <td><%= @review.food_category%></td>
+        </tr>
+        <tr>
+          <td>掲載の有無</td>
+          <td>
+            <% if @review.is_active == true %>
+              掲載
+            <% end %>
+            <% if @review.is_active == false %>
+              未掲載
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class = "text-center">
+      <%= link_to "編集する", edit_review_path, class: "btn btn-outline-danger col-6" %>
+    </div>
+  
+  </div>
+</div>
