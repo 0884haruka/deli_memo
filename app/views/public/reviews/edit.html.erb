@@ -3,11 +3,17 @@
     <div class="row">
       <div class="col-md-12">
         \\編集ページ!!//
-        <%= form_with model: @review,  method: :patch do |review| %>
+        <%= form_with model: @review, method: :patch do |f| %>
         <table>
           <tr>
             <th>商品画像</th>
-            <!--<td><!%= f.file_field :review_image, accept: "image/*" %></td>-->
+            <td>
+              <div>
+            <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
+            <br />
+            <%= f.file_field :review_image, accept: "image/*" %>
+            </div>
+            </td>
           </tr>
           <tr>
             <th>商品名</th>
@@ -19,23 +25,23 @@
           </tr>
           <tr>
             <th>お値段</th>
-            <td><%= f.select :price, class: "custom-input" %>円</td>
+            <td><%= f.text_field :price, class: "custom-input" %>円</td>
           </tr>
           <tr>
             <th>地域</th>
-            <td><%= f.text_field :prefecture, class: "custom-input" %></td>
+            <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {} %></td>
           </tr>
           <tr>
             <th>カテゴリー</th>
-            <td><%= f.text_field :food_categor, class: "custom-input" %></td>
+            <td><%= f.select :food_category, Review.food_categories.keys.to_a, {} %></td>
           </tr>
           <tr>
             <th>販売ステータス</th>
             <td>
-              <%= f.label :is_active, '掲載' %>
-              <%= f.radio_button :is_active, true %>
-              <%= f.label :is_active, '未掲載' %>
-              <%= f.radio_button :is_active, false %>
+              <%= f.label :sales_status_on_sale, '掲載する' %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :sales_status_draft, '掲載しない' %>
+              <%= f.radio_button :is_active, :false, checked: true %>
             </td>
           </tr>
           <tr>

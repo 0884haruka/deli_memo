@@ -3,25 +3,25 @@
   <div class="row">
     <div class="col-md-3">
       <h2>\\Contributor!!//</h2>
-      <!--<!%= image_tag member.get_profile_image(100,100) %>-->
-      <!--  <table class="table">-->
-      <!--    <tbody>-->
-      <!--      <tr></tr>-->
-      <!--      <tr>-->
-      <!--        <th>\\Nick Name!!//</th>-->
-      <!--        <th><!%= menber.name %></th>-->
-      <!--      </tr>-->
-      <!--      <tr>-->
-      <!--        <th>\\introduction!!//</th>-->
-      <!--        <th><!%= menber.introduction %></th>-->
-      <!--      </tr>-->
-      <!--    </tbody>-->
-      <!--  </table>-->
-<!--<div class="row">-->
-<!--<!%= link_to edit_user_path(current_user) ,class: 'btn btn-outline-secondary btn-block edit_user_108038' do %>-->
-<!--  <i class="fas fa-user-cog"></i>-->
-<!--<!% end %>-->
-<!--</div>-->
+      <%= image_tag current_member.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <th>\\Nick Name!!//</th>
+              <th><%= current_member.nick_name %></th>
+            </tr>
+            <tr>
+              <th>\\introduction!!//</th>
+              <th><%= current_member.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+<div class="row">
+<%= link_to edit_members_path(current_member) ,class: 'btn btn-outline-secondary btn-block edit_user_108038' do %>
+  <i class="fas fa-user-cog"></i>
+<% end %>
+</div>
 
       <h2 class="mt-2">\\Follow!!//</h2>
       <h2 class="mt-2">\\Follower!!//</h2>
@@ -81,6 +81,6 @@
       <h2>
       <h6>Let's go!!</h6>
       <% end %>
-    
+
   </div>
 </div>

@@ -14,11 +14,10 @@ class Public::ReviewsController < ApplicationController
   def index
     @reviews = Review.all
     @current_time = Time.current
-    @review = Review.find(params[:id])
   end
 
   def edit
-     @raview = Review.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   def show
@@ -26,10 +25,10 @@ class Public::ReviewsController < ApplicationController
   end
   
   def update
-    @raview = Raview.find(params[:id])
-    if @raview.update(raview_params)
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
       flash[:notice] = "登録商品を編集しました"
-      redirect_to raview_path
+      redirect_to review_path
     else
       render :edit
     end

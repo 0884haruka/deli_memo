@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get "about" => "public/homes#about", as: "about"
   resources :comments, only: [:index, :show]
-  resource :members, only: [:index, :show, :edit, :update]
+  resource :members, only: [:show, :edit, :update]
 
   scope module: :public do
     resources :reviews do
@@ -10,7 +10,12 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
     end
     # post '/members/sign_up' => 'members#sign_up', as: 'members_sign_up'
-    get '/mypage' => 'members#index', as: 'mypage'
+    get '/mypage' => 'members#show', as: 'mypage'
+    get '/edit/mypage' => 'members#edit'
+    patch '/edit/mypage' => 'members#update'
+    get 'mdmbers/confirm' => 'members#confirm'
+    patch 'members/withdraw' => 'members#withdraw'
+
   end
 
 

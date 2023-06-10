@@ -1,0 +1,34 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row"> 
+    <div class="mx-auto">
+      <h3>
+        \\Member information change!!//<i class="fas fa-pencil-alt"></i>
+      <h3>
+        
+        <%= form_with model: @member, url: edit_mypage_path, method: :patch do |f| %>
+      <h6>お名前</h6>
+      <div class = "form-group">
+        <%= f.text_field :name %>
+      </div>
+      <h6>ニックネーム</h6>
+      <div class = "form-group">
+        <%= f.text_field :nick_name %>
+      </div>
+      <h6>Image</h6>
+      <div class = "form-group">
+        <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
+      </div>
+      <h6>Introduction</h6>
+      <div class = "form-group">
+        <%= f.text_area :introduction %>
+      </div>
+      <div class = "form-group">
+        <%= f.submit 'Update User',class:"btn btn-secondary" %>
+      </div>
+<% end %>
+
+<%= link_to "退会する", mdmbers_confirm_path %>
+    </div>
+  </div>
+</div>
