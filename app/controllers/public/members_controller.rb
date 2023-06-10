@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
- 
+
   def sign_up
   end
 
@@ -13,7 +13,7 @@ class Public::MembersController < ApplicationController
   def edit
     @member = current_member
   end
-  
+
   def update
     @member = current_member
     if@member.update(member_params)
@@ -23,13 +23,13 @@ class Public::MembersController < ApplicationController
       render :edit
     end
   end
-  
+
   def confirm
   end
 
   def withdraw
     member = current_member
-    member.is_active = false
+    member.is_deleted = true
     member.save
     session.clear
     redirect_to root_path
@@ -38,7 +38,7 @@ class Public::MembersController < ApplicationController
 private
 
   def member_params
-    params.require(:member).permit(:name, :nick_name, :image, :introduction)
+    params.require(:member).permit(:name, :nick_name, :profile_image, :introduction)
   end
 
 end
