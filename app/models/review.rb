@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :member
   has_one_attached :review_image
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
   enum prefecture:{
@@ -31,4 +33,7 @@ class Review < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def liked_by?(member)
+    likes.exists?(member_id: member.id)
+  end
 end

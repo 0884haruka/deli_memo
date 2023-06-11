@@ -10,11 +10,12 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
     end
     # post '/members/sign_up' => 'members#sign_up', as: 'members_sign_up'
-    get '/mypage' => 'members#show', as: 'mypage'
+    get '/mypage/:id' => 'members#show', as: 'mypage'
     get '/edit/mypage' => 'members#edit'
     patch '/edit/mypage' => 'members#update'
     get 'mdmbers/confirm' => 'members#confirm'
     patch 'members/withdraw' => 'members#withdraw'
+    
 
   end
 

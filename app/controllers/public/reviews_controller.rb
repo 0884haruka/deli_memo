@@ -8,7 +8,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.member_id = current_member.id
     @review.save
-    redirect_to mypage_path
+    redirect_to mypage_path(current_member)
   end
 
   def index
@@ -22,6 +22,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @comment = Comment.new
   end
   
   def update
@@ -37,7 +38,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :review_image, :price, :prefecture,:food_category,:is_active)
+    params.require(:review).permit(:title, :body, :review_image, :price, :prefecture,:food_category,:is_active,:profile_image)
   end
 
 end

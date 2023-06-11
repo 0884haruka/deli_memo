@@ -54,12 +54,16 @@ ActiveRecord::Schema.define(version: 2023_06_08_130014) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
+    t.integer "member_id"
+    t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer "like"
+    t.integer "member_id"
+    t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

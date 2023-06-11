@@ -8,7 +8,7 @@
           <h2>
             <i class="fas fa-plus"></i>
             \\New Review!!//<i class="fas fa-pencil-alt"></i>
-          <h2>
+          </h2>
           <h6>Click here to register for review!!</h6>
         <% end %>
       </li>
@@ -23,11 +23,8 @@
       <th class="custom-header"></th>
       <th class="custom-header"></th>
       <th class="custom-header">商品名</th>
-      <th class="custom-header">レビュー内容</th>
       <th class="custom-header">お値段</th>
-      <th class="custom-header">地域</th>
-      <th class="custom-header">食品カテゴリー</th>
-      <th class="custom-header">掲載の有無</th>
+      <th class="custom-header"></th>
       <th class="custom-header"></th>
     </tr>
     <% @reviews.each do |review| %>
@@ -41,24 +38,27 @@
       </td>
       <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
       <td><%= review.title %></td>
-      <td><%= review.body %></td>
       <td><%= review.price%>円</td>
-      <td><%= review.prefecture %></td>
-      <td><%= review.food_category%></td>
       <td>
-        <% if review.is_active == true %>
-          掲載
-        <% end %>
-        <% if review.is_active == false %>
-          未掲載
-        <% end %>
+        <% if review.liked_by?(current_member) %>
+        <p>
+          <%= link_to review_likes_path(review), method: :delete do %>
+            ♥<%= review.likes.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to review_likes_path(review), method: :post do %>
+            ♡<%= review.likes.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
       </td>
+      <!--<td><p><!%= link_to "#{review.comments.count} コメント", review_path %></p></td>-->
       <td><%= link_to "Show",review_path(review.id) %></td>
     </tr>
     <% end %>
   </table>
-  <!--<div class="d-flex justify-content-center custom-pagination">-->
-  <!--  <!%= paginate @items, class: "custom-pagination" %>-->
-  <!--</div>-->
+  
   </div>
 </div>

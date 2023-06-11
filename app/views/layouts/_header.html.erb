@@ -17,7 +17,7 @@
           <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
               <li class="nav-item">
-                <%= link_to mypage_path, class: 'btn custom-button mx-2' do %>
+                <%= link_to mypage_path(current_member), class: 'btn custom-button mx-2' do %>
                   マイページ
                 <% end %>
               </li>

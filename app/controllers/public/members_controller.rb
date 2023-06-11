@@ -4,9 +4,10 @@ class Public::MembersController < ApplicationController
   end
 
   def show
-    # @member = Member.find(params[:id])
-    # @members = @member.images
-    @reviews = Review.order('id DESC').limit(5)
+    # @review = Review.find(params[:id])
+    @member = Member.find(params[:id])
+    # @member = menber.reviews
+    @member_reviews = @member.reviews.order('id DESC').limit(5)
     @current_time = Time.current
   end
 
@@ -18,7 +19,7 @@ class Public::MembersController < ApplicationController
     @member = current_member
     if@member.update(member_params)
       flash[:notice] = "You have update."
-      redirect_to  mypage_path
+      redirect_to  mypage_path(current_member)
     else
       render :edit
     end

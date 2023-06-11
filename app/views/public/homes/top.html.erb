@@ -11,7 +11,7 @@
         <div class="mx-auto">
             <div class="row">
               <% @reviews.each do |review| %>
-                <div class="col-3 fadein txt0<%= @k %>">
+                <div class="col-3 fadein txt0 ">
                   <%= link_to review_path(review.id), class: "text-decoration-none" do %>
                     <div class="card text-dark tr-color h-100 bg-transparent border-0">
                       <%= image_tag(review.review_image.variant(resize: '100x100'), class: "card-img-top rounded-circle") if review.review_image.attached? %>
