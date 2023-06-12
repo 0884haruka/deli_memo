@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     patch '/edit/mypage' => 'members#update'
     get 'mdmbers/confirm' => 'members#confirm'
     patch 'members/withdraw' => 'members#withdraw'
-    
-
   end
 
 

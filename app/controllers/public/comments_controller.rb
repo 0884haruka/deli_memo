@@ -6,6 +6,11 @@ class Public::CommentsController < ApplicationController
     comment.save
     redirect_to request.referer
   end
+  
+  def destroy
+    Rebiew.find(params[:id]).destroy
+    redirect_to request.referer
+  end
 
   private
 
