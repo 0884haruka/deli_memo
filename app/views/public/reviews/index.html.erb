@@ -54,7 +54,7 @@
         </p>
       <% end %>
       </td>
-      <!--<td><p><!%= link_to "#{review.comments.count} コメント", review_path %></p></td>-->
+      <td><p><%= link_to "#{review.comments.count} コメント", review_path(review.id) %></p></td>
       <td><%= link_to "Show",review_path(review.id) %></td>
     </tr>
     <% end %>

@@ -9,6 +9,7 @@ class Public::MembersController < ApplicationController
     # @member = menber.reviews
     @member_reviews = @member.reviews.order('id DESC').limit(5)
     @current_time = Time.current
+    
   end
 
   def edit

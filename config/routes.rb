@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # namespace :public do
+  #   get 'relationships/followings'
+  #   get 'relationships/followers'
+  # end
   root to: 'public/homes#top'
   get "about" => "public/homes#about", as: "about"
   resources :comments, only: [:index, :show]
@@ -9,13 +13,19 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    resource :relationships, only: [:create, :destroy]
     # post '/members/sign_up' => 'members#sign_up', as: 'members_sign_up'
     get '/mypage/:id' => 'members#show', as: 'mypage'
     get '/edit/mypage' => 'members#edit'
     patch '/edit/mypage' => 'members#update'
     get 'mdmbers/confirm' => 'members#confirm'
     patch 'members/withdraw' => 'members#withdraw'
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
+  
+  
+  
 
 
   # 顧客用
