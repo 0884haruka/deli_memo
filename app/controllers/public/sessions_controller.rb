@@ -19,7 +19,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  protected
+  #protected
 
     # 退会しているかを判断するメソッド
   def members_state
@@ -40,4 +40,11 @@ class Public::SessionsController < Devise::SessionsController
     mypage_path(current_member)
     # super(resource)
   end
+  
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    redirect_to reviews_path(member), notice: 'guestmemberでログインしました。'
+  end
+  
 end

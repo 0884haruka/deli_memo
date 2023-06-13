@@ -17,6 +17,10 @@
           <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
               <li class="nav-item">
+                <%= link_to top_index_path, class: 'btn custom-button mx-2' do %>
+                  トップページ
+                <% end %>
+              <li class="nav-item">
                 <%= link_to mypage_path(current_member), class: 'btn custom-button mx-2' do %>
                   マイページ
                 <% end %>
@@ -33,31 +37,21 @@
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to admin_items_path, class: 'btn custom-button mx-2' do %>
-                  商品一覧
-                <% end %>
+                <!--<!%= link_to admin_items_path, class: 'btn custom-button mx-2' do %>-->
+                  投稿一覧
+                <%# end %>
               </li>
               <li class="nav-item">
-                <%= link_to admin_customers_path, class: 'btn custom-button mx-2' do %>
+                <!--<!%= link_to admin_customers_path, class: 'btn custom-button mx-2' do %>-->
                   会員一覧
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to admin_root_path, class: 'btn custom-button mx-2' do %>
-                  注文履歴一覧
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to admin_genres_path, class: 'btn custom-button mx-2' do %>
-                  ジャンル一覧
-                <% end %>
+                <!--<%# end %>-->
               </li>
               <li class="nav-item">
                 <%= link_to destroy_admin_session_path, method: :delete, class: 'btn custom-button mx-2' do %>
                   ログアウト
                 <% end %>
               </li>
-            <% else %>
+                <% else %>
               <li class="nav-item">
                 <%= link_to about_path, class: 'btn custom-button mx-2' do %>
                   About

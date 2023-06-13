@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # end
   root to: 'public/homes#top'
   get "about" => "public/homes#about", as: "about"
+  get "/top/index" => "public/homes#index"
   resources :comments, only: [:index, :show]
   resource :members, only: [:show, :edit, :update]
 
@@ -22,10 +23,13 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => 'members#withdraw'
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    devise_scope :member do
+      post 'guest_sign_in' => 'sessions#guest_sign_in'
+    end
   end
-  
-  
-  
+
+
+
 
 
   # 顧客用

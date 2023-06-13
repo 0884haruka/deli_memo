@@ -1,0 +1,37 @@
+
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-2">
+        Deli Ranking
+      </div>
+      <div class="col-md-6 offset-md-1">
+        デリデリ
+        <h2 class="mt-3">New review</h2>
+        <div class="mx-auto">
+            <div class="row">
+              <% @reviews.each do |review| %>
+                <div class="col-3 fadein txt0 ">
+                  <%= link_to review_path(review.id), class: "text-decoration-none" do %>
+                    <div class="card text-dark tr-color h-100 bg-transparent border-0">
+                      <%= image_tag(review.review_image.variant(resize: '100x100'), class: "card-img-top rounded-circle") if review.review_image.attached? %>
+                      <div class="card-body">
+                        <h6 class="card-title text-truncate"><%= review.title %></h6>
+                        <p class="card-text text-truncate">
+                         <%= review.body %>
+                        </p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+      </div>
+      </div>
+      </div>
+      <div class="col-md-2 offset-md-1">
+        ♡いいね♡Ranking
+      </div>
+
+  </div>
+</div>

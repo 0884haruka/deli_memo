@@ -1,8 +1,12 @@
 class Public::HomesController < ApplicationController
   def top
-    @reviews = Review.order('id DESC').limit(4)
   end
 
   def about
   end
+  
+  def index
+    @reviews = Review.order('id DESC').limit(4)
+  end
+  
 end

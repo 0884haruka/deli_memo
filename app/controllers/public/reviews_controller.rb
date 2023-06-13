@@ -1,4 +1,6 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit, :new]
 
   def new
     @review = Review.new
@@ -25,7 +27,7 @@ class Public::ReviewsController < ApplicationController
     @comment = Comment.new
     @member = @review.member
   end
-  
+
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
@@ -35,17 +37,24 @@ class Public::ReviewsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to review_path
+    redirect_to reviews_path
   end
 
   private
 
   def review_params
     params.require(:review).permit(:title, :body, :review_image, :price, :prefecture,:food_category,:is_active,:profile_image)
+  end
+
+  def ensure_guest_member
+    if current_member.name == "guestmember"
+      flash[:notice] = "レビュー投稿、いいね♡、コメントは新規会員登録後にご利用いただけます。"
+      redirect_to new_member_registration_path
+    end
   end
 
 end
