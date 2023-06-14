@@ -1,0 +1,28 @@
+<h2>\\Results index//</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがMemberの時 -->
+  <% if @range == "Member" %>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= member.nick_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがMemberではない時(= 検索対象モデルがReviewの時) -->
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.title %></td>
+          <td><%= review.body %></td>
+          <td><%= price %></td>
+          <td><%= prefecture %></td>
+          <td><%= food_category %></td>
+          <td>showページ</td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

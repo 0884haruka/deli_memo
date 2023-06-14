@@ -48,4 +48,12 @@ class Member < ApplicationRecord
     end
   end
   
+  def self.looks(search, word)
+    if search == "partial_match"
+      @member = Member.where("name LIKE?","%#{word}%")
+    else
+      @member = Member.all
+    end
+  end
+  
 end

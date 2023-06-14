@@ -1,7 +1,14 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-      <div class="col-md-12">
+    <div class="col-md-12">
+      <!--検索、タグ検索機能-->
+      <div class="search-form text-right">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>  
     <ul style="list-style: none;">
       <% if current_member.name != "guestuser" %>
       <li>

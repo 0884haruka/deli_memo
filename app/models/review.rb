@@ -4,7 +4,6 @@ class Review < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-
   enum prefecture:{
     "都道府県を選択ください":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -36,4 +35,13 @@ class Review < ApplicationRecord
   def liked_by?(member)
     likes.exists?(member_id: member.id)
   end
+
+  def self.looks(search, word)
+    if search == "partial_match"
+      @review = Review.where("name LIKE?","%#{word}%")
+    else
+      @review = Review.all
+    end
+  end
+
 end

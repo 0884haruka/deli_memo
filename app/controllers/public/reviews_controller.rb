@@ -50,10 +50,14 @@ class Public::ReviewsController < ApplicationController
     params.require(:review).permit(:title, :body, :review_image, :price, :prefecture,:food_category,:is_active,:profile_image)
   end
 
+  def book_params
+    params.require(:review).permit(:title, :body, :profile_image, :category)
+  end
+
   def ensure_guest_member
     if current_member.name == "guestmember"
-      flash[:notice] = "レビュー投稿、いいね♡、コメントは新規会員登録後にご利用いただけます。"
-      redirect_to new_member_registration_path
+      flash[:notice] = "レビュー投稿は新規会員登録後にご利用いただけます。"
+      redirect_to root_path, notice: "レビュー投稿は新規会員登録後にご利用いただけます。"
     end
   end
 

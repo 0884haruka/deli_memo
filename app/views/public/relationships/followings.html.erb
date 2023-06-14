@@ -28,5 +28,11 @@
     <% else %>
       <p>ユーザーはいません</p>
     <% end %>
+    <div class="text-right mt-3">
+      <%= link_to followers_path(member_id: current_member.id) do %>
+        <h3>\\Followew!!//</h3>
+        <h6>Click here for follower list!!!</h6>
+      <% end %>
+    </div>
    </div>
  </div>

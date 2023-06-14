@@ -6,7 +6,14 @@ class Public::HomesController < ApplicationController
   end
   
   def index
-    @reviews = Review.order('id DESC').limit(4)
+    @reviews4 = Review.order('id DESC').limit(4)
+    @tags = Review.select(:prefecture).distinct
+    @selected_tag = params[:tag_search]
+    @reviews = if @selected_tag.present?
+               Review.where(prefecture: @selected_tag)
+             else
+               Review.all
+             end
   end
   
 end

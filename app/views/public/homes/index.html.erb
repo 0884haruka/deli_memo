@@ -5,13 +5,15 @@
   <div class="row">
       <div class="col-md-2">
         Deli Ranking
+        いいね♡ランキング
       </div>
+      
       <div class="col-md-6 offset-md-1">
         デリデリ
         <h2 class="mt-3">New review</h2>
         <div class="mx-auto">
             <div class="row">
-              <% @reviews.each do |review| %>
+              <% @reviews4.each do |review| %>
                 <div class="col-3 fadein txt0 ">
                   <%= link_to review_path(review.id), class: "text-decoration-none" do %>
                     <div class="card text-dark tr-color h-100 bg-transparent border-0">
@@ -30,7 +32,20 @@
       </div>
       </div>
       <div class="col-md-2 offset-md-1">
-        ♡いいね♡Ranking
+       
+        <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
+          <%= select_tag :tag_search, options_from_collection_for_select(@tags, 'prefecture', 'prefecture', @selected_tag), include_blank: true %>
+          <%= submit_tag '検索する' %>
+        <% end %>
+             
+        <% @reviews.each do |review| %>
+          <%= review.title %>
+          <!-- レビューの表示内容を適宜追加 -->
+        <% end %>
+      <%#= render 'serach', member: Members %>
+      <!--<%#= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->
+        
+       
       </div>
 
   </div>

@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'comments/index'
+    get 'comments/show'
+    get 'comments/edit'
+  end
+  namespace :admin do
+    get 'reviews/index'
+    get 'reviews/show'
+    get 'reviews/edit'
+  end
+  namespace :admin do
+    get 'members/index'
+    get 'members/show'
+    get 'members/edit'
+  end
   # namespace :public do
   #   get 'relationships/followings'
   #   get 'relationships/followers'
@@ -23,10 +38,13 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => 'members#withdraw'
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get "search" => "searches#search"
     devise_scope :member do
       post 'guest_sign_in' => 'sessions#guest_sign_in'
     end
   end
+  
+  
 
 
 
