@@ -8,7 +8,7 @@ class Public::CommentsController < ApplicationController
   end
   
   def destroy
-    Rebiew.find(params[:id]).destroy
+    Comment.find(params[:id]).destroy
     redirect_to request.referer
   end
 

@@ -3,9 +3,8 @@
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  # TODO: Adminの遷移先ってどこにしますか？
   def after_sign_in_path_for(resource)
-    mypage_path　#遷移先のパス
+    admin_root_path #遷移先のパス,管理者トップ
   end
 
   # GET /resource/sign_in
@@ -14,9 +13,9 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  #def create
+    #super
+  #end
 
   # DELETE /resource/sign_out
   # def destroy

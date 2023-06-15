@@ -39,15 +39,16 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
     get "search" => "searches#search"
+    get 'search' => 'reviews#search'
     devise_scope :member do
       post 'guest_sign_in' => 'sessions#guest_sign_in'
     end
   end
-  
-  
 
+  namespace :admin do
+    root to: 'homes#top'
 
-
+  end
 
 
   # 顧客用

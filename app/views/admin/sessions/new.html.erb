@@ -8,7 +8,7 @@
         </div>
 
         <%#= form_with model: @member,url: new_member_session_path do |f| %>
-        <%= form_with model: @member,url:new_admin_session_path  do |f| %>
+        <%= form_with model: Admin.new, url:admin_session_path do |f| %>
           <div class="input-group mb-3 mt-3">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-envelope"></i></span>

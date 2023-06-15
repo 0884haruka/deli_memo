@@ -3,7 +3,7 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "Menber"
-      @members = Memberr.looks(params[:search], params[:word])
+      @members = Member.looks(params[:search], params[:word])
     else
       @reviews = Review.looks(params[:search], params[:word])
     end

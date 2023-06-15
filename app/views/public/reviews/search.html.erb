@@ -8,18 +8,17 @@
         <%= f.text_field :keyword, value: @keyword %>
         <%= f.submit "検索" %>
       <% end %>
-    </div>
+    </div>  
      <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
             <%= select_tag :prefectur_search, options_from_collection_for_select(@tag_prefectures, 'prefecture', 'prefecture'), include_blank: true %>
             <%= submit_tag '検索する' %>
           <% end %>
-
-
+          
+          
           <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
             <%= select_tag :food_category_search, options_from_collection_for_select(@tag_food_category, 'food_category', 'food_category'), include_blank: true %>
             <%= submit_tag '検索する' %>
           <% end %>
-
     <ul style="list-style: none;">
       <% if current_member.name != "guestuser" %>
       <li>
@@ -47,15 +46,7 @@
       <th class="custom-header"></th>
       <th class="custom-header"></th>
     </tr>
-    <% @reviews.each do |review| %>
-    <tr>
-      <td>
-        <% if @current_time < review.created_at.since(7.days) %>
-          <div class = "new-mark">
-            <%= image_tag("new.png", alt: "new", width: "40", height: "40") %></div>
-          </div>
-        <% end %>
-      </td>
+    <% @reviews.each do |review| %>  <%# @review_food_category.each do |review| %>
       <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
       <td><%= review.title %></td>
       <td><%= review.price%>円</td>

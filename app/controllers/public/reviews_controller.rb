@@ -14,8 +14,22 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
-    @current_time = Time.current
+    @reviews = Review.public_data #掲載のみ表示（モデルに記載、モデルのデータを引いてきた書き込み）
+    @current_time = Time.current #新着マーク
+    @selected_prefecture = params[:prefectur_search] 
+    @selected_food_category = params[:food_category_search] 
+
+    @tag_prefectures= @reviews.select(:prefecture).distinct 
+    @tag_food_category = @reviews.select(:food_category).distinct 
+
+    if @selected_prefecture.present?
+      @reviews = @reviews.where(prefecture: @selected_prefecture)
+      render :search
+    end
+    if @selected_food_category.present?
+      @reviews = @reviews.where(food_category: @selected_food_category)
+      render :search
+    end
   end
 
   def edit
@@ -43,6 +57,13 @@ class Public::ReviewsController < ApplicationController
     @review.destroy
     redirect_to reviews_path
   end
+
+  def search
+    @reviews = Review.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "review/search"
+  end
+
 
   private
 
