@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
-  scope :public_data, -> { where(is_active: true) } #indexの掲載のみを表示する記述を
-  
+  scope :public_data, -> { where(is_active: true) } #indexの掲載のみを表示する記述を追加
+
   belongs_to :member
   has_one_attached :review_image
   has_many :likes, dependent: :destroy
@@ -45,7 +45,7 @@ class Review < ApplicationRecord
       @review = Review.all
     end
   end
-  
-  
+
+
 
 end

@@ -37,14 +37,14 @@
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <!--<!%= link_to admin_items_path, class: 'btn custom-button mx-2' do %>-->
+                <%= link_to admin_reviews_index_path, class: 'btn custom-button mx-2' do %>
                   投稿一覧
-                <%# end %>
+                <% end %>
               </li>
               <li class="nav-item">
-                <!--<!%= link_to admin_customers_path, class: 'btn custom-button mx-2' do %>-->
+                <%= link_to admin_members_index_path, class: 'btn custom-button mx-2' do %>
                   会員一覧
-                <!--<%# end %>-->
+                <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to destroy_admin_session_path, method: :delete, class: 'btn custom-button mx-2' do %>
