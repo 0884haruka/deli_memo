@@ -1,2 +1,56 @@
-<h1>Admin::Reviews#edit</h1>
-<p>Find me in app/views/admin/reviews/edit.html.erb</p>
+<p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        \\編集ページ!!//
+        <%= form_with model: @review, method: :patch do |f| %>
+        <table>
+          <tr>
+            <th>商品画像</th>
+            <td>
+              <div>
+            <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
+            <br />
+            <%= f.file_field :review_image, accept: "image/*" %>
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <th>商品名</th>
+            <td><%= f.text_field :title, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>レビュー内容</th>
+            <td><%= f.text_area :body, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>お値段</th>
+            <td><%= f.text_field :price, class: "custom-input" %>円</td>
+          </tr>
+          <tr>
+            <th>地域</th>
+            <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {} %></td>
+          </tr>
+          <tr>
+            <th>カテゴリー</th>
+            <td><%= f.select :food_category, Review.food_categories.keys.to_a, {} %></td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <%= f.label :sales_status_on_sale, '掲載する' %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :sales_status_draft, '掲載しない' %>
+              <%= f.radio_button :is_active, :false, checked: true %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit '変更を保存', class:"btn custom-button" %>
+            </td>
+          </tr>
+        </table>
+        <% end %>
+      </div>
+    </div>
+  </div>

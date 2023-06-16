@@ -1,2 +1,45 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+</div><div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"></p>
+      <h2>\\Members Details Page//</h2>
+      <%#= @member.nick_name %>さんの会員詳細
+    </h5>
+  </div>
+	<table class="table table-borderless">
+		<tr>
+			<td class="col-4" >氏名</td>
+			<td class="col-8"><%#= @member.name %></td>
+		</tr>
+		<tr>
+			<td class="col-4" >ニックネーム</td>
+			<td class="col-8"><%#= @member.name %></td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td><%#= @member.email %></td>
+		</tr>
+	</table>
+
+  <div class="row  justify-content-center">
+    <div class="col-6">
+      <table class="table table-borderless">
+    		<tr>
+    			<td>
+    				<%= link_to admin_members_edit_path do %>
+    					<button class="btn custom-button">編集する</button>
+    				<% end %>
+    			</td>
+    			<td>
+    				<%= link_to admin_reviews_index_path(member_id: @member) do %>
+    					<button class="btn custom-button">投稿者レビュー一覧をみる</button>
+    				<% end %>
+    			</td>
+    		</tr>
+    	</table>
+      
+      
+      
+    </div>
+  </div>
+</div>

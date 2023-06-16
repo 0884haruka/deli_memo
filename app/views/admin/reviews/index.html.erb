@@ -3,9 +3,51 @@
     <div class="col-md-12">
       <p id="notice"></p>
       <h2>\\List of Review Pagese//</h2>
-      
-      
-      
+
+
+  </div>
+  <h2 class="mt-3">
+        <i class="fas fa-clipboard-list"></i>
+        \\Review ALL List!!//<i class="far fa-hand-point-up"></i>
+  </h2>
+  <table class="table table-hover">
+    <tr>
+      <th class="custom-header"></th>
+      <th class="custom-header"></th>
+      <th class="custom-header">商品名</th>
+      <th class="custom-header">掲載表示</th>
+      <th class="custom-header"></th>
+      <th class="custom-header"></th>
+    </tr>
+    <% @reviews.each do |review| %>
+    <tr class = "table-link" data-href="/public/review_path/<%= review.id %>" >
+      <td>
+        <% if @current_time < review.created_at.since(7.days) %>
+          <div class = "new-mark">
+            <%= image_tag("new.png", alt: "new", width: "40", height: "40") %></div>
+          </div>
+        <% end %>
+      </td>
+      <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
+      <td><%= review.title %></td>
+      <td> <%# if @review.is_active == true %>
+              掲載
+            <%# end %>
+            <%# if @review.is_active == false %>
+              未掲載
+            <%# end %></td>
+      <!--いいねはカウントのみ-->
+      <td>
+         ♡<%= review.likes.count %> いいね
+      </td>
+      <td><p><%= link_to "#{review.comments.count} コメント", review_path(review.id) %></p></td>
+      <td><%= link_to "Show",review_path(review.id) %></td>
+    </tr>
+    <% end %>
+  </table>
+
+
     </div>
   </div>
 </div>
+

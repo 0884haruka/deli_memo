@@ -62,7 +62,7 @@
             </p>
           <% end %>
           </td>
-          
+
         </tr>
         <tr>
           <td><p>コメント件数：<%= @review.comments.count %></p></td>
@@ -71,7 +71,7 @@
               <% @review.comments.each do |comment| %>
               <div class="col">
                 <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
-              </div>  
+              </div>
               <div class="col d-flex align-text-center">
                 <div>
                 <%= comment.member.nick_name %><br />

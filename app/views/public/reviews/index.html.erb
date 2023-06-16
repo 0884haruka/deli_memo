@@ -48,7 +48,7 @@
       <th class="custom-header"></th>
     </tr>
     <% @reviews.each do |review| %>
-    <tr class = "table-link" data-href="/public/review_path/<%= review.id %>" >
+    <tr class = "table-link" data-href="public/review_path/<%= review.id %>" >
       <td>
         <% if @current_time < review.created_at.since(7.days) %>
           <div class = "new-mark">
