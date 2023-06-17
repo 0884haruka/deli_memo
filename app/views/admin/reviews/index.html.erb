@@ -30,12 +30,12 @@
       </td>
       <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
       <td><%= review.title %></td>
-      <td> <%# if @review.is_active == true %>
+      <td> <% if review.is_active == true %>
               掲載
-            <%# end %>
-            <%# if @review.is_active == false %>
+            <% end %>
+            <% if review.is_active == false %>
               未掲載
-            <%# end %></td>
+            <% end %></td>
       <!--いいねはカウントのみ-->
       <td>
          ♡<%= review.likes.count %> いいね

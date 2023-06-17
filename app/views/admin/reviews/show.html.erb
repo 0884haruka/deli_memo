@@ -74,13 +74,17 @@
         </tr>
       </table>
     </div>
-    <% if @member == current_member %>
+    
     <div class = "text-center">
-      <%= link_to "編集する", admin_reviews_edit, class: "btn btn-outline-danger col-6" %>
+      <%= link_to "投稿者レビュー一覧をみる", list_admin_member_reviews_path(@member), class: "btn btn-outline-secondary col-6" %>
+    </div>
+    
+    <div class = "text-center mt-3">
+      <%= link_to "編集する", edit_admin_review_path, class: "btn btn-outline-danger col-6" %>
     </div>
     <div class = "text-center mt-3">
       <%= link_to "削除する", review_path(@review), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-secondary col-6" %>
     </div>
-    <% end %>
+   
   </div>
 </div>

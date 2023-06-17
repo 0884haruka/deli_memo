@@ -24,13 +24,8 @@
               </td>
               <td>
                 <%= member.email %>
-              </td>
-              <td>
-                <!--<%# if member.is_active %>-->
-                <!--  <span class="text-success font-weight-bold">有効</span>-->
-                <!--<%# else %>-->
-                <!--  <span class="text-muted font-weight-bold">退会</span>-->
-                <!--<%# end %>-->
+                </td>
+                <td>
                 <%= link_to "詳細ページ",admin_member_path(member.id) %>
               </td>
             </tr>

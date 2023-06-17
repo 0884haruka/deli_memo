@@ -3,7 +3,7 @@ class Admin::ReviewsController < ApplicationController
      @reviews = Review.all
      @current_time = Time.current #新着マーク
   end
-  
+
   def list
     @member = Member.find(params[:member_id])
     @reviews = @member.reviews
@@ -18,12 +18,22 @@ class Admin::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
   
+  def update
+    @review = Review.find(params[:id])
+    if @review.update(admin_review_params)
+      flash[:notice] = "登録情報を更新しました。"
+      redirect_to admin_review_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to reviews_path
   end
-  
+
   private
 
   def review_params
@@ -33,5 +43,5 @@ class Admin::ReviewsController < ApplicationController
   def member_params
     params.require(:review).permit(:title, :body, :profile_image, :category)
   end
-  
+
 end

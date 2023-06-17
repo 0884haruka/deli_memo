@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   # namespace :public do
   #   get 'relationships/followings'
   #   get 'relationships/followers'
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     end
     get '/reviews/list' => 'reviews#list'
   end
-  
+
 
   # 顧客用
   # URL /customers/sign_in ...

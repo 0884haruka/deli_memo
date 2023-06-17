@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-md-12">
       <p id="notice"></p>
-      <%#= @member.nick_name %>さんの情報編集ページ
+      <%= @member.nick_name %>さんの情報編集ページ
     </h5>
   </div>
-	<%= form_with model: @member, url: edit_mypage_path, method: :patch do |f| %>
+	<%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
       <h6>お名前</h6>
       <div class = "form-group">
         <%= f.text_field :name %>
@@ -27,7 +27,7 @@
       </div>
     <% end %>
     </div>
-		<%= link_to admin_members_edit_path do %>
+		<%= link_to admin_members_path do %>
 			<button class="btn custom-button">編集せずに戻る</button>
 		<% end %>
   </div>
