@@ -37,12 +37,12 @@
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to admin_reviews_index_path, class: 'btn custom-button mx-2' do %>
+                <%= link_to admin_reviews_path, class: 'btn custom-button mx-2' do %>
                   投稿一覧
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to admin_members_index_path, class: 'btn custom-button mx-2' do %>
+                <%= link_to admin_members_path, class: 'btn custom-button mx-2' do %>
                   会員一覧
                 <% end %>
               </li>

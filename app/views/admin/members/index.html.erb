@@ -31,7 +31,7 @@
                 <!--<%# else %>-->
                 <!--  <span class="text-muted font-weight-bold">退会</span>-->
                 <!--<%# end %>-->
-                <%= link_to "詳細ページ",admin_members_show_path %>
+                <%= link_to "詳細ページ",admin_member_path(member.id) %>
               </td>
             </tr>
           <% end %>

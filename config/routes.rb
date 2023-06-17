@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'comments/index'
-    get 'comments/show'
-    get 'comments/edit'
-  end
-  namespace :admin do
-    get 'reviews/index'
-    get 'reviews/show'
-    get 'reviews/edit'
-  end
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
+ 
   # namespace :public do
   #   get 'relationships/followings'
   #   get 'relationships/followers'
@@ -49,7 +35,19 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
   end
-
+   namespace :admin do
+    resources :comments
+    resources :reviews
+    resources :members do
+      resources :reviews,only: []do
+        collection do
+          get 'list'
+        end
+      end
+    end
+    get '/reviews/list' => 'reviews#list'
+  end
+  
 
   # 顧客用
   # URL /customers/sign_in ...

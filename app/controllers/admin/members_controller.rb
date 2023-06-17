@@ -5,15 +5,15 @@ class Admin::MembersController < ApplicationController
   end
 
   def show
-    @member = Member.find_by(id: params[:id])
+    @member = Member.find(params[:id])
   end
 
   def edit
-    @member = Member.find_by(id: params[:id])
+    @member = Member.find(params[:id])
   end
   
   def update
-    @member = Member.find_by(id: params[:id])
+    @member = Member.find(params[:id])
     if @member.update(admin_member_params)
       flash[:notice] = "登録情報を更新しました。"
       redirect_to admin_reviews_show_path
