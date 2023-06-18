@@ -24,13 +24,13 @@
         <tr>
           <td>
             <!--投稿者のページへ遷移させたい-->
-            <%=link_to mypage_path(@review.member.id) do %>
+            <%=link_to mypage_path(@review.member.id), class: "text-decoration-none text-dark"  do %>
               <%= image_tag @review.member.get_profile_image(100,100) %><br />
-              <%= @review.member.nick_name %><br />
+               <i class="far fa-user text-danger"></i><%= @review.member.nick_name %><br />
               <% if current_member.following?(@member) %>
-                <%= link_to "フォロー外す", relationships_path(member_id: @member.id), method: :delete %>
+                <%= link_to "フォロー外す", relationships_path(member_id: @member.id), method: :delete, class: "text-decoration-none text-dark" %>
               <% else %>
-                <%= link_to "フォローする", relationships_path(member_id: @member.id), method: :post %>
+                <%= link_to "フォローする", relationships_path(member_id: @member.id), method: :post, class: "text-decoration-none text-dark" %>
               <% end %>
             <% end %>
           </td>
@@ -50,14 +50,14 @@
           <td>
             <% if @review.liked_by?(current_member) %>
             <p>
-              <%= link_to review_likes_path(@review), method: :delete do %>
-                ♥<%= @review.likes.count %> いいね
+              <%= link_to review_likes_path(@review), method: :delete, class: "text-decoration-none text-dark" do %>
+                <i class="text-danger ">♥</i><%= @review.likes.count %> いいね
               <% end %>
             </p>
             <% else %>
             <p>
-              <%= link_to review_likes_path(@review), method: :post do %>
-                ♡<%= @review.likes.count %> いいね
+              <%= link_to review_likes_path(@review), method: :post, class: "text-decoration-none text-dark" do %>
+                <i class="text-danger">♡</i><%= @review.likes.count %> いいね
               <% end %>
             </p>
           <% end %>
@@ -65,7 +65,7 @@
 
         </tr>
         <tr>
-          <td><p>コメント件数：<%= @review.comments.count %></p></td>
+          <td><p><i class="far fa-comment-alt text-danger"></i>コメント件数：<%= @review.comments.count %></p></td>
           <td colspan="5">
             <div>
               <% @review.comments.each do |comment| %>

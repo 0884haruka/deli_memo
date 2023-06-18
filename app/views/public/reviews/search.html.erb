@@ -57,19 +57,26 @@
         <% if review.liked_by?(current_member) %>
         <p>
           <%= link_to review_likes_path(review), method: :delete do %>
-            ♥<%= review.likes.count %> いいね
+            <i class="text-danger ">♥</i><%= review.likes.count %> いいね
           <% end %>
         </p>
         <% else %>
         <p>
           <%= link_to review_likes_path(review), method: :post do %>
-            ♡<%= review.likes.count %> いいね
+            <i class="text-danger">♡</i><%= review.likes.count %> いいね
           <% end %>
         </p>
       <% end %>
       </td>
-      <td><p><%= link_to "#{review.comments.count} コメント", review_path(review.id) %></p></td>
-      <td><%= link_to "Show",review_path(review.id) %></td>
+      <td><p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
+            <i class="far fa-comment-alt text-danger"></i> <%=review.comments.count %> コメント
+            <% end %></p>
+      </td>
+      <td>
+        <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
+        \\Show//<i class="far fa-hand-point-up text-danger"></i>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </table>

@@ -7,6 +7,7 @@ class Member < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :profile_image
   has_many :likes, dependent: :destroy
+  has_many :liked_members, through: :likes, source: :review #いいねランキング
   
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

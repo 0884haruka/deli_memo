@@ -3,21 +3,34 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-2">
-        Deli Ranking
-        いいね♡ランキング
+      <div class="col-md-3">
+        <h2>\\Like<i class="text-danger">♡</i>Ranking!!//</h2>
+        <% @reviews_like.each do |review| %>
+        <table>
+          <%= link_to review_path(review.id) do %>
+            <tr>
+              <td>№○</td>
+              <td>
+                <div class="ml-3"><%= image_tag review.review_image.variant(resize:'70x70') if review.review_image.attached? %></div>
+              </td>
+              <td>
+                <div class="ml-3"><i class="text-danger">♥</i><%= review.likes.count %> いいね</div>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <% end %>
       </div>
       
-      <div class="col-md-9 offset-md-1">
-        デリデリ
-        <h2 class="mt-3">New review</h2>
+      <div class="col-md-8 offset-md-1">
+        <h2>\\New review!!//</h2>
         <div class="mx-auto">
             <div class="row">
-              <% @reviews4.each do |review| %>
+              <% @reviews_new4.each do |review| %>
                 <div class="col-3 fadein txt0 ">
                   <%= link_to review_path(review.id), class: "text-decoration-none" do %>
                     <div class="card text-dark tr-color h-100 bg-transparent border-0">
-                      <%= image_tag(review.review_image.variant(resize: '100x100'), class: "card-img-top rounded-circle") if review.review_image.attached? %>
+                      <%= image_tag(review.review_image.variant(resize: '120x120'), class: "card-img-top") if review.review_image.attached? %>
                       <div class="card-body">
                         <h6 class="card-title text-truncate"><%= review.title %></h6>
                         <p class="card-text text-truncate">

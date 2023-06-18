@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   belongs_to :member
   has_one_attached :review_image
   has_many :likes, dependent: :destroy
+  has_many :liked_members, through: :likes, source: :member #いいねランキング
   has_many :comments, dependent: :destroy
 
   enum prefecture:{
