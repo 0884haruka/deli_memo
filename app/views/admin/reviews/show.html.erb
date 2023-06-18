@@ -80,10 +80,10 @@
     </div>
     
     <div class = "text-center mt-3">
-      <%= link_to "編集する", edit_admin_review_path, class: "btn btn-outline-danger col-6" %>
+      <%= link_to "管理者が編集する", edit_admin_review_path, class: "btn btn-outline-danger col-6" %>
     </div>
     <div class = "text-center mt-3">
-      <%= link_to "削除する", review_path(@review), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-secondary col-6" %>
+      <%= link_to "管理者が削除する", admin_review_path(@review), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-secondary col-6" %>
     </div>
    
   </div>

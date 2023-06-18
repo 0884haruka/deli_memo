@@ -2,20 +2,24 @@
 	<div class="row">
     <div class="col-md-8 center">
       <p id="notice"></p>
-      <h2>\\Members Details Page//</h2>
+      <h2>\\Members Details Page!!//</h2>
       <%= @member.nick_name %>さんの会員詳細
     </h5>
 	<table class="table">
 		<tr>
-			<td class="col-2" >氏名</td>
+			<td class="col-2" >Name ＞>></td>
 			<td class="col-2"><%= @member.name %></td>
 		</tr>
 		<tr>
-			<td class="col-2" >ニックネーム</td>
+			<td class="col-2" >Nick Name ＞>></td>
 			<td class="col-2"><%= @member.nick_name %></td>
 		</tr>
 		<tr>
-			<td>メールアドレス</td>
+			<td class="col-2" >introduction ＞>></td>
+			<td class="col-2"><%= @member.introduction %></td>
+		</tr>
+		<tr>
+			<td>Mail ＞>></td>
 			<td><%= @member.email %></td>
 		</tr>
 	</table>

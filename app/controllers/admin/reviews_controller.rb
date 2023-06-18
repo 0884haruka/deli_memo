@@ -17,7 +17,7 @@ class Admin::ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
   end
-  
+
   def update
     @review = Review.find(params[:id])
     if @review.update(admin_review_params)
@@ -31,12 +31,12 @@ class Admin::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to reviews_path
+    redirect_to list_admin_member_reviews_path(@review.member_id)
   end
 
   private
 
-  def review_params
+  def admin_review_params
     params.require(:review).permit(:title, :body, :review_image, :price, :prefecture,:food_category,:is_active,:profile_image)
   end
 
