@@ -2,18 +2,24 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 ">
-      <h2>\\Contributor!!//</h2>
+      <h2 style="text-align: center;">\\Contributor!!//</h2>
+      <div style="text-align: center;">
       <%= image_tag current_member.get_profile_image(100,100) %>
-        <table class="table">
+      </div>
+        <table class="table table-borderless">
           <tbody>
             <tr></tr>
             <tr>
-              <th>\\Nick Name!!//</th>
-              <th><%= current_member.nick_name %></th>
+              <th style="text-align: center;"><h4>\\Nick Name!!//</h4></th>
             </tr>
             <tr>
-              <th>\\introduction!!//</th>
-              <th><%= current_member.introduction %></th>
+              <th style="text-align: center; "><%= current_member.nick_name %></th>
+            </tr>
+            <tr>
+              <th style="text-align: center;"><h4>\\introduction!!//</h4></th>
+            </tr>
+            <tr>
+              <th style="text-align: center;"><%= current_member.introduction %></th>
             </tr>
           </tbody>
         </table>
@@ -24,14 +30,16 @@
           <% end %>
         </div>
       <% end %>
-      <h2 class="mt-2">\\Follow!!//</h2>
-      <%= link_to followings_path(member_id: @member.id) do %>
-        <%= @member.followings.count %>
+      <h2 style="margin-top: 30px; text-align: center;">\\Follow!!//<br />
+      <%= link_to followings_path(member_id: @member.id), class: "text-decoration-none text-dark"  do %>
+        <i class="fas fa-user-plus text-danger"></i>  <%= @member.followings.count %>
       <% end %>
-      <h2 class="mt-2">\\Follower!!//</h2>
-      <%= link_to followers_path(member_id: @member.id) do %>
-        <%= @member.followers.count %>
+      </h2>
+      <h2 style="margin-top: 3px; text-align: center;">\\Follower!!//<br />
+      <%= link_to followers_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-users text-danger"></i>  <%= @member.followers.count %>
       <% end %>
+      </h2>
     </div>
     <div class="col-md-8 offset-md-1 ">
       <!--検索、タグ検索機能-->
