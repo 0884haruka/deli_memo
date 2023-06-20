@@ -4,26 +4,28 @@
 <div class="container">
   <div class="row">
       <div class="col-md-3">
-        <h2>\\Like<i class="text-danger">♡</i>Ranking!!//</h2>
-        <% @reviews_like.each do |review| %>
-        <table>
-          <%= link_to review_path(review.id) do %>
-            <tr>
-              <td>№○</td>
-              <td>
-                <div class="ml-3"><%= image_tag review.review_image.variant(resize:'70x70') if review.review_image.attached? %></div>
-              </td>
-              <td>
-                <div class="ml-3"><i class="text-danger">♥</i><%= review.likes.count %> いいね</div>
-              </td>
-            </tr>
+        <div style="text-align: center;">
+          <h2>\\Like<i class="text-danger">♡</i>Ranking!!//</h2>
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+         <ul style ="list-style: none; padding: 0;">  
+          <% @reviews_like.each.with_index(1) do |review,index| %>
+          <!--.with_index(1)→eachで１から順番に呼び出し|review,index|の記載忘れずに-->
+            <li>
+              <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
+                №<%= index %>
+                <%= image_tag review.review_image.variant(resize: '70x70') if review.review_image.attached? %>
+                <i class="text-danger">♥</i><%= review.likes.count %> いいね<br />
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <% end %>
+            </li>
           <% end %>
-        </table>
-        <% end %>
+          </ul>
+        </div>
       </div>
       
       <div class="col-md-8 offset-md-1">
         <h2>\\New review!!//</h2>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <div class="mx-auto">
             <div class="row">
               <% @reviews_new4.each do |review| %>

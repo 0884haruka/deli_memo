@@ -38,10 +38,10 @@ class Public::MembersController < ApplicationController
   end
   
   def destroy
-      @member = Member.find(params[:id]) 
-      @member.destroy
-      flash[:notice] = 'ユーザーを削除しました。'
-      redirect_to :root #削除に成功すればrootページに戻る
+    member = current_member
+    member.destroy
+    flash[:notice] = 'ユーザーを削除しました。'
+    redirect_to :root #削除に成功すればrootページに戻る
   end
 
 private

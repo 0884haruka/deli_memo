@@ -9,7 +9,7 @@
       <button class="btn custom-button">退会しない</button>
     <% end %>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to members_withdraw_path, method: :patch do %>
+    <%= link_to member_destroy_path, method: :delete do %>
       <button class="btn delete-button">退会する</button>
     <% end %>
   </div>

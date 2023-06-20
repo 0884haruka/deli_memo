@@ -36,9 +36,8 @@
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
             </div>
             <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> ケタ以上)</em>
               <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"inputEmail", placeholder:"パスワード" %>
+              <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"inputEmail", placeholder:"パスワード #{@minimum_password_length} ケタ以上" %>
           </div>
             <!--<div class="field">-->
             <!--  <!%= f.label :パスワード %>-->
@@ -56,7 +55,7 @@
             </div>
 
             <div class="actions">
-              <%= f.submit "登録する" ,class:"btn btn-block btn-secondary mt-5" %>
+              <%= f.submit "登録する" ,class:"btn btn-block btn-secondary mt-3 mb-3" %>
             </div>
           <%= render "public/shared/links" %>
 

@@ -3,8 +3,6 @@
     <div class="col-md-12">
       <p id="notice"></p>
       <%= @member.nick_name %>さんの情報編集ページ
-    </h5>
-  </div>
 	<%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
       <h6>お名前</h6>
       <div class = "form-group">
@@ -14,7 +12,7 @@
       <div class = "form-group">
         <%= f.text_field :nick_name %>
       </div>
-      <h6>Image</h6>
+      <h6>Profile Image</h6>
       <div class = "form-group">
         <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
       </div>
@@ -30,5 +28,6 @@
 		<%= link_to admin_members_path do %>
 			<button class="btn custom-button">編集せずに戻る</button>
 		<% end %>
+		</div>
   </div>
 </div>
