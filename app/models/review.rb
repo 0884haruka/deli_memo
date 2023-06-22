@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_members, through: :likes, source: :member #いいねランキング
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   enum prefecture:{
     "都道府県を選択ください":0,
@@ -47,6 +48,9 @@ class Review < ApplicationRecord
     end
   end
 
+  def bookmarked_by?(member)
+    bookmarks.where(member_id: member).exists?
+  end
 
 
 end

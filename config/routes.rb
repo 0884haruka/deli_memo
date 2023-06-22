@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
     resource :relationships, only: [:create, :destroy]
     # post '/members/sign_up' => 'members#sign_up', as: 'members_sign_up'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
     get "search" => "searches#search"
     get 'search' => 'reviews#search'
+    get 'bookmark/index' => 'bookmarks#index'
     devise_scope :member do
       post 'guest_sign_in' => 'sessions#guest_sign_in'
     end

@@ -40,7 +40,12 @@
         <i class="fas fa-users text-danger"></i>  <%= @member.followers.count %>
       <% end %>
       </h2>
-    </div>
+
+      <h2 style="margin-top: 3px; text-align: center;">\\Book Mark//<br />
+      <%= link_to bookmark_index_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
+      <%= @member.bookmarks.count %>件
+      <% end %>
+      </div>
     <div class="col-md-8 offset-md-1 ">
       <!--検索、タグ検索機能-->
       <% if member_signed_in? %>

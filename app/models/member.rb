@@ -16,6 +16,9 @@ class Member < ApplicationRecord
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  
+  #いいねブックマーク
+  has_many :bookmarks, dependent: :destroy
 
 
   def get_profile_image(width, height)
