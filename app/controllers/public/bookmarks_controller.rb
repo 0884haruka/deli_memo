@@ -5,7 +5,7 @@ class Public::BookmarksController < ApplicationController
     member = Member.find(params[:member_id])
     @bookmarks = member.bookmarks
     @current_time = Time.current
-    
+    @review = Review.find(params[:review_id]) unless params[:review_id].nil?
   end
 
   def create

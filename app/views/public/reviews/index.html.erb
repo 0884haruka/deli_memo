@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <!--検索、タグ検索機能-->
-    
+
     <% if member_signed_in? %>
       <div class="search_form text-right">
         <%= form_with url: search_path, local: true, method: :get do |f| %>
@@ -12,16 +12,19 @@
         <% end %>
       </div>
     <% end %>
-     <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
-            <%= select_tag :prefectur_search, options_from_collection_for_select(@tag_prefectures, 'prefecture', 'prefecture'), include_blank: true %>
-            <%= submit_tag '検索する',{ include_blank: '都道府県を選択してください'} %>
-          <% end %>
 
-
-          <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
-            <%= select_tag :food_category_search, options_from_collection_for_select(@tag_food_category, 'food_category', 'food_category'), include_blank: true %>
-            <%= submit_tag '検索する',{ include_blank: '都道府県を選択してください'} %>
-          <% end %>
+    <div class="form-inline text-right">
+      <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
+        <%= select_tag :prefectur_search, options_from_collection_for_select(@tag_prefectures, 'prefecture', 'prefecture'), include_blank: '都道府県を選択してください' %>
+        <%= submit_tag '検索する' %>
+      <% end %>
+   &emsp;&emsp;&emsp;&emsp;
+  
+      <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
+        <%= select_tag :food_category_search, options_from_collection_for_select(@tag_food_category, 'food_category', 'food_category'), include_blank: 'フードカテゴリーを選択してください' %>
+        <%= submit_tag '検索する' %>
+      <% end %>
+    </div>
 
     <ul style="list-style: none;">
       <% if current_member.name != "guestuser" %>
