@@ -9,12 +9,16 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.member_id = current_member.id
-    @review.save
-    redirect_to mypage_path(current_member)
+    if @review.save
+      redirect_to mypage_path(current_member)
+    else
+      render :new
+    end
   end
 
   def index
     @reviews = Review.public_data #掲載のみ表示（モデルに記載、モデルのデータを引いてきた書き込み）
+    #@reviews = Review.public_data.page(params[:page])
     @current_time = Time.current #新着マーク
     @selected_prefecture = params[:prefectur_search]
     @selected_food_category = params[:food_category_search]

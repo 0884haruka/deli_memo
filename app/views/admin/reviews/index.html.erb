@@ -19,7 +19,7 @@
       <th class="custom-header"></th>
       <th class="custom-header"></th>
     </tr>
-    <% @reviews.each do |review| %>
+    <% @reviews.order(created_at: :desc).each do |review| %>
     <tr class = "table-link" data-href="/public/review_path/<%= review.id %>" >
       <td>
         <% if @current_time < review.created_at.since(7.days) %>
@@ -45,8 +45,9 @@
     </tr>
     <% end %>
   </table>
-
-
+  <div class="text-center">
+      <%= link_to "ひとつ前に戻る", :back, class: "btn btn-outline-danger col-6" %>
+  </div>
     </div>
   </div>
 </div>

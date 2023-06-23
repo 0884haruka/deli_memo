@@ -14,15 +14,16 @@
     <% end %>
 
     <div class="form-inline text-right">
+      <!--右寄りにならない。。(´；Д；`)-->
       <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
         <%= select_tag :prefectur_search, options_from_collection_for_select(@tag_prefectures, 'prefecture', 'prefecture'), include_blank: '都道府県を選択してください' %>
-        <%= submit_tag '検索する' %>
+        <%= submit_tag '検索する', class: 'btn btn-outline-secondary mx-2' %>
       <% end %>
    &emsp;&emsp;&emsp;&emsp;
   
       <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
         <%= select_tag :food_category_search, options_from_collection_for_select(@tag_food_category, 'food_category', 'food_category'), include_blank: 'フードカテゴリーを選択してください' %>
-        <%= submit_tag '検索する' %>
+        <%= submit_tag '検索する', class: 'btn btn-outline-secondary mx-2' %>
       <% end %>
     </div>
 
@@ -53,8 +54,9 @@
       <th class="custom-header"></th>
       <th class="custom-header"></th>
     </tr>
-    <% @reviews.each do |review| %>
-    <tr class = "table-link" data-href="public/review_path/<%= review.id %>" >
+    <% @reviews.order(created_at: :desc).each do |review| %>
+    <!--新着から呼び出す-->
+    <tr>
       <td>
         <% if @current_time < review.created_at.since(7.days) %>
           <div class = "new-mark">
@@ -92,6 +94,6 @@
     </tr>
     <% end %>
   </table>
-
+<%#= paginate @reviews %>
   </div>
 </div>

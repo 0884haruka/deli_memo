@@ -14,7 +14,7 @@
       <th class="custom-header"></th>
       <th class="custom-header"></th>
     </tr>
-    <% @reviews.each do |review| %>
+    <% @reviews.order(created_at: :desc).each do |review| %>
     <tr class = "table-link" data-href="/public/review_path/<%= review.id %>" >
       <td>
         <% if Time.current < review.created_at.since(7.days) %>
@@ -48,6 +48,7 @@
   		<%= link_to admin_reviews_path do %>
   			<button class="btn custom-button btn-outline-secondary col-6 mt-3">全レビュー一覧へ戻る</button>
   		<% end %>
+  		<br />
     </div>
   </div>
 </div>

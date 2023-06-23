@@ -2,7 +2,20 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h2>最新のレビュー</h2>
+        
+        <h2>\\最新のレビュー//</h2>
+        
+        <div class="errors text-danger">
+          <% if @review.errors.any? %>
+          <%= @review.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+          <% end %>
+        </div>
+          
       </div>
       <%= form_with model: @review do |f| %>
         <table>

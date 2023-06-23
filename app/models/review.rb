@@ -7,6 +7,9 @@ class Review < ApplicationRecord
   has_many :liked_members, through: :likes, source: :member #いいねランキング
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  
+  validates :title, :body, :price, presence: true
+  validates :prefecture, :food_category, acceptance: { accept: true }
 
   enum prefecture:{
     "都道府県を選択ください":0,

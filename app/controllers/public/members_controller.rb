@@ -7,7 +7,7 @@ class Public::MembersController < ApplicationController
     # @review = Review.find(params[:id])
     @member = Member.find(params[:id])
     # @member = menber.reviews
-    @member_reviews = @member.reviews.order('id DESC').limit(5)
+    @member_reviews = @member.reviews
     @current_time = Time.current
     
   end
