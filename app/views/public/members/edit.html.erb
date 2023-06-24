@@ -5,13 +5,13 @@
       <h2>\\Member information change!!//<i class="fas fa-pencil-alt"></i></h2>
 
       <%= form_with model: @member, url: edit_mypage_path, method: :patch do |f| %>
-        <h6>お名前</h6>
+        <h6>Name</h6>
         <div class="form-group">
-          <%= f.text_field :name %>
+          <%= f.text_field :name, class:"col-6" %>
         </div>
-        <h6>ニックネーム</h6>
+        <h6>Nick Newame</h6>
         <div class="form-group">
-          <%= f.text_field :nick_name %>
+          <%= f.text_field :nick_name, class:"col-6" %>
         </div>
         <h6>Image</h6>
         <div class="form-group">
@@ -19,13 +19,12 @@
         </div>
         <h6>Introduction</h6>
         <div class="form-group">
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction, class:"col-6" %>
         </div>
         <div class="form-group">
-          <%= f.submit 'Update User', class: "btn btn-secondary" %>
+          <%= f.submit 'Update Information', class: "btn btn-secondary col-6" %>
         </div>
       <% end %>
-      <%= link_to "退会する", members_confirm_path %>
-    </div>
+      <%= link_to "退会する", members_confirm_path, class: "btn custom-button btn-outline-danger col-6" %>    </div>
   </div>
 </div>

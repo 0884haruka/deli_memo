@@ -7,12 +7,10 @@ class Review < ApplicationRecord
   has_many :liked_members, through: :likes, source: :member #いいねランキング
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  
-  validates :title, :body, :price, presence: true
-  validates :prefecture, :food_category, acceptance: { accept: true }
+
+  validates :review_image, :title, :body, :price, :prefecture, :food_category, presence: true
 
   enum prefecture:{
-    "都道府県を選択ください":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
     新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
@@ -25,7 +23,6 @@ class Review < ApplicationRecord
   }
 
   enum food_category:{
-    "カテゴリを選択ください":0,
     肉・肉加工品:1,魚介類・魚加工品:2,野菜・野菜加工品:3,乳製品・チーズ:4,
     スイーツ・和菓子:5,豆腐・豆加工品:6,麺類・パン・米:7,漬物・ふりかけ:8,
     調味料:9,お惣菜:10

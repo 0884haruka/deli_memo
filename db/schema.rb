@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2023_06_22_110321) do
   create_table "reviews", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
-    t.integer ":price", null: false
+    t.integer "price", null: false
     t.integer "member_id", null: false
     t.boolean "is_active", default: true, null: false
     t.integer "prefecture", default: 0, null: false

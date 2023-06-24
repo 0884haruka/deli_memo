@@ -2,9 +2,9 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        
+
         <h2>\\最新のレビュー//</h2>
-        
+
         <div class="errors text-danger">
           <% if @review.errors.any? %>
           <%= @review.errors.count %>件のエラーが発生しました
@@ -15,7 +15,7 @@
           </ul>
           <% end %>
         </div>
-          
+
       </div>
       <%= form_with model: @review do |f| %>
         <table>
@@ -33,11 +33,11 @@
           </tr>
           <tr>
             <th>地域</th>
-            <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {} %></td>
+            <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {:include_blank => "都道府県を選択ください"} %></td>
           </tr>
           <tr>
             <th>食品カテゴリー</th>
-            <td><%= f.select :food_category, Review.food_categories.keys.to_a, {} %></td>
+            <td><%= f.select :food_category, Review.food_categories.keys.to_a, { :include_blank => "カテゴリを選択ください"} %></td>
           </tr>
           <tr>
             <th>税込価格</th>

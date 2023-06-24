@@ -7,7 +7,7 @@ class Public::MembersController < ApplicationController
     # @review = Review.find(params[:id])
     @member = Member.find(params[:id])
     # @member = menber.reviews
-    @member_reviews = @member.reviews
+    @member_reviews = @member.reviews.page(params[:page])
     @current_time = Time.current
     
   end

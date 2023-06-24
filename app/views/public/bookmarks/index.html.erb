@@ -10,7 +10,7 @@
               <th class="custom-header"></th>
               <th class="custom-header"></th>
               <th class="custom-header">商品名</th>
-              <th class="custom-header">掲載の有無</th>
+              <th class="custom-header"></th>
               <th class="custom-header"></th>
               <th class="custom-header"></th>
             </tr>
@@ -19,16 +19,20 @@
                 <% @bookmarks.each do |bookmark| %>
                   <tr>
                     <td>
-                        <% if @current_time < bookmark.created_at.since(7.days) %>
-                          <div class = "new-mark">
-                            <%#= bookmark.image_tag("new.png", alt: "new", width: "40", height: "40") %></div>
-                        <% end %>
+                      <% if @current_time < bookmark.created_at.since(7.days) %>
+                        <div class = "new-mark">
+                          <%= image_tag("new.png", alt: "new", width: "40", height: "40") %>
+                        </div>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= image_tag(bookmark.review.review_image, width: "100", height: "100") %>
                     </td>
                     <td><%= bookmark.review.title %></td>
                     <td>
-                        <p><%= link_to review_path(bookmark.review_id), class: "text-decoration-none text-dark" do %>
-                        show
-                        <% end %></p>
+                      <p><%= link_to review_path(bookmark.review_id), class: "text-decoration-none text-dark" do %>
+                      詳細ページはこちら
+                      <% end %></p>
                     </td>
                   </tr>
                 <% end %>

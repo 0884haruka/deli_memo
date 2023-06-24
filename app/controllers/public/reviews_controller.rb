@@ -17,8 +17,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.public_data #掲載のみ表示（モデルに記載、モデルのデータを引いてきた書き込み）
-    #@reviews = Review.public_data.page(params[:page])
+    #@reviews = Review.public_data #掲載のみ表示（モデルに記載、モデルのデータを引いてきた書き込み）
+    @reviews = Review.public_data.page(params[:page])
     @current_time = Time.current #新着マーク
     @selected_prefecture = params[:prefectur_search]
     @selected_food_category = params[:food_category_search]
