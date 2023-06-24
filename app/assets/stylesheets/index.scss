@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #6c6b6b;
+  // color: #6c6b6b;
 }
 
 
@@ -15,5 +15,11 @@
 .page-list{
    .pagination{
      display: block;
+     text: decoration-none;
+     text-color: #6c6b6b;
    }
+}
+
+.new-review{
+   margin-top: 50px;
 }
