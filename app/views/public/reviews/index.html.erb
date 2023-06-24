@@ -6,13 +6,13 @@
         <div class="form-inline">
           <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
             <%= select_tag :prefectur_search, options_from_collection_for_select(@tag_prefectures, 'prefecture', 'prefecture'), include_blank: '都道府県を選択してください' %>
-            <%= submit_tag '検索する', class: 'btn btn-outline-secondary mx-2' %>
+            <%= submit_tag '検索', class: 'btn btn-outline-secondary mx-2' %>
           <% end %>
           &emsp;&emsp;&emsp;
       
           <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
             <%= select_tag :food_category_search, options_from_collection_for_select(@tag_food_category, 'food_category', 'food_category'), include_blank: 'フードカテゴリーを選択してください' %>
-            <%= submit_tag '検索する', class: 'btn btn-outline-secondary mx-2' %>
+            <%= submit_tag '検索', class: 'btn btn-outline-secondary mx-2' %>
           <% end %>
           &emsp;&emsp;&emsp;
           <% if member_signed_in? %>

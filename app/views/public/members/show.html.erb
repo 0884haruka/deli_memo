@@ -46,7 +46,7 @@
           <% end %>
         </h2>
     </div>
-    <div class="col-md-8 offset-md-1 ">
+    <div class="col-md-9">
           <!--検索、タグ検索機能-->
           <% if member_signed_in? %>
           <div class="search_form text-right">
@@ -115,6 +115,11 @@
                 <p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
                 <i class="far fa-comment-alt text-danger"></i> <%=review.comments.count %> コメント
                 <% end %></p>
+              </td>
+              <td>
+                <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
+                \\Show//
+                <% end %>
               </td>
             </tr>
             <% end %>
