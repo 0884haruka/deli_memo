@@ -5,9 +5,17 @@
   // color: #6c6b6b;
 }
 
+.top-image-container {
+  display: flex;
+}
 
 .image-container {
   display: flex;
+  opacity: 0.5;
+}
+
+.about-image-container {
+  background: black;
 }
 
 .image {
@@ -33,4 +41,12 @@
 
 .new-review{
    margin-top: 50px;
+}
+
+.text {
+    position: absolute;
+    color: white;
+    right: 50%;
+    transform: translateX(50%);
+    top: 40%;
 }

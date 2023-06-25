@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 ">
-      <h2 style="text-align: center;">\\Contributor!!//</h2>
+      <h2 style="text-align: center;">\\Contributor!!//</h2><!-- title -->
+        <!-- left container start -->
         <div style="text-align: center;">
         <%= image_tag current_member.get_profile_image(100,100) %>
         </div>
@@ -46,13 +47,15 @@
           <% end %>
         </h2>
     </div>
+    <!-- left container end -->
+    <!-- right container start  -->
     <div class="col-md-9">
           <!--検索、タグ検索機能-->
           <% if member_signed_in? %>
           <div class="search_form text-right">
             <%= form_with url: search_path, local: true, method: :get do |f| %>
               <%= f.text_field :word %>
-              <%= f.submit "検索" , class: 'btn btn-outline-secondary mx-2'%>
+              <%= f.submit "検索" , class: 'btn btn-outline-secondary btn-sm'%>
             <% end %>
           </div>
           <% end %>
@@ -125,6 +128,7 @@
             <% end %>
           </table>
         </div>
+     <!-- right container end  -->
       </div>
       <div class="page-list text-center">
         <%= paginate @member_reviews %>

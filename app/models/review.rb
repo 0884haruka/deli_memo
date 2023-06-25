@@ -42,7 +42,7 @@ class Review < ApplicationRecord
 
   def self.looks(search, word)
     if search == "partial_match"
-      @review = Review.where("title LIKE? OR body LIKE?","%#{word}%","%#{word}%")
+      @review = Review.joins(:member).where("title LIKE? OR body LIKE? OR members.nick_name LIKE? OR price LIKE?" ,"%#{word}%","%#{word}%","%#{word}%","%#{word}%")
     else
       @review = Review.all
     end
