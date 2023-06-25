@@ -1,22 +1,28 @@
 <p id="notice"></p>
   <div class="container">
-    <div class="row">
       <div class="col-md-12">
-        \\編集ページ!!//
+        <h2>\\編集ページ!!//</h2>
+       </div>
         <%= form_with model: @review, method: :patch do |f| %>
+        <div class="row">
+        <div class="col-md-6">
+          <table>
+            <tr>
+              <th>商品画像</th>
+              <td>
+                <div>
+              <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
+              <br />
+              <%= f.file_field :review_image, accept: "image/*" %>
+              </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
         <table>
           <tr>
-            <th>商品画像</th>
-            <td>
-              <div>
-            <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
-            <br />
-            <%= f.file_field :review_image, accept: "image/*" %>
-            </div>
-            </td>
-          </tr>
-          <tr>
-            <th>商品名</th>
+            <th>商品名</th><br />
             <td><%= f.text_field :title, class: "custom-input" %></td>
           </tr>
           <tr>
@@ -44,13 +50,9 @@
               <%= f.radio_button :is_active, :false, checked: true %>
             </td>
           </tr>
-          <tr>
-            <td>
-              <%= f.submit '変更を保存', class:"btn custom-button" %>
-            </td>
-          </tr>
         </table>
+         <%= f.submit '変更を保存', class: "btn btn-outline-secondary col-6 mt-5" %>
+        </div>
         <% end %>
-      </div>
     </div>
   </div>
