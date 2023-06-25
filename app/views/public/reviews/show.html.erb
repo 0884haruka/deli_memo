@@ -48,9 +48,9 @@
         </td>
         <td>
           <% if @review.bookmarked_by?(current_member) %>
-            <%= link_to "ブックマークを外す", review_bookmarks_path(@review), method: :delete %>
+            <%= link_to "ブックマークを外す", review_bookmarks_path(@review), method: :delete, class: "text-decoration-none text-dark" %>
           <% else %>
-          <%= link_to "ブックマーク", review_bookmarks_path(@review), method: :post %>
+          <%= link_to "ブックマークする", review_bookmarks_path(@review), method: :post, class: "text-decoration-none text-dark" %>
           <% end %>
         </td>
       </tr>
