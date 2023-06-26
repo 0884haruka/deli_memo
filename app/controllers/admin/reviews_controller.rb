@@ -1,6 +1,6 @@
 class Admin::ReviewsController < ApplicationController
   def index
-     @reviews = Review.all
+     @reviews = Review.page(params[:page])
      @current_time = Time.current #新着マーク
   end
 
