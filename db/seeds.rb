@@ -10,8 +10,8 @@ Admin.create!(email:"d@d",password:"dddddd")
 
 Members = Member.create!(
   [
-    {email: 'p@p', name: 'pppppp', nick_name: 'ぴー', password: 'pppppp', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")},
-    {email: 'o@o', name: 'oooooo', nick_name: 'おー', password: 'oooooo', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
+    {email: 'f@f', name: 'ffffff', nick_name: 'えふ', password: 'ffffff', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")},
+    {email: 'e@e', name: 'eeeeee', nick_name: 'いー', password: 'eeeeee', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
     {email: 'u@u', name: 'uuuuuu', nick_name: 'ゆー', password: 'uuuuuu', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")},
     {email: 'y@y', name: 'yyyyyy', nick_name: 'わい', password: 'yyyyyy', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")},
     {email: 't@t', name: 'tttttt', nick_name: 'てぃー', password: 'tttttt', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")},
