@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-12 form-center">
       <p id="notice"></p>
-      <%= @member.nick_name %>さんの情報編集ページ
-	<%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
+      <h3>\\<%= @member.nick_name %>さんの情報編集ページ!!//</h3>
+	    <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
       <h6>お名前</h6>
       <div class = "form-group">
         <%= f.text_field :name %>
