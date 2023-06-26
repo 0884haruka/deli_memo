@@ -4,84 +4,119 @@
     <div class="col-md-12">
       <h2 class="mt-3">review details</h2>
     </div>
-    <div class="col-md-4">
-      <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
-    </div>
-    <div class="col-md-8"></div>
-      <table class="table t-bordered mt-5">
-      <!--<table class="table table-hover">どちらにしようか考え中-->
-        <tr>
-          <th>投稿者</th>
-          <th>商品名</th>
-          <th>レビュー内容</th>
-          <th>お値段（税込）</th>
-          <th>地域</th>
-          <th>食品カテゴリー</th>
-          <th>掲載の有</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>
-            <!--投稿者のページへ遷移させたい-->
-            <%=link_to admin_member_path(@review.member.id) do %>
-              <%= image_tag @review.member.get_profile_image(100,100) %><br />
-              <%= @review.member.nick_name %><br />
-            <% end %>
-          </td>
-          <td><%= @review.title %></td>
-          <td><%= @review.body %></td>
-          <td><%= @review.price%>円</td>
-          <td><%= @review.prefecture %></td>
-          <td><%= @review.food_category%></td>
-          <td>
-            <% if @review.is_active == true %>
-              掲載
-            <% end %>
-            <% if @review.is_active == false %>
-              未掲載
-            <% end %>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><p>コメント件数：<%= @review.comments.count %></p></td>
-          <td colspan="5">
-            <div>
-              <% @review.comments.each do |comment| %>
-              <div class="col">
-                <p><%= image_tag comment.member.get_profile_image(100,100) %></p>
-              </div>
-              <div class="col d-flex align-text-center">
-                <div>
-                <%= comment.member.nick_name %><br />
-                <%= comment.created_at.strftime('%Y/%m/%d') %><br />
-                <%= comment.comment %><br />
-                <!--<%# if comment.member == admin？ %><br />-->
-                  <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-                <%# end %>
-                </div>
-              </div>
-              <% end %>
-            </div>
-            <div class="comment">
 
-            </div>
-          </td>
-        </tr>
-      </table>
+    <!-- left container start -->
+    <div class="col-md-3 mt-5">
+      <p><%= image_tag(@review.review_image.variant(resize:'300x300'), class: "w-100") if @review.review_image.attached? %></p>
     </div>
-    
+    <!-- left container end -->
+    <!-- right container start  -->
+    <div class="col-md-9">
+      <table class="table table-hover mt-5">
+    <!--<table class="table table-hover">どちらにしようか考え中-->
+      <tr>
+        <th>投稿者</th>
+        <td>
+          <!--投稿者のページへ遷移させたい-->
+          <div class="text-center">
+            <%=link_to mypage_path(@review.member.id), class: "text-decoration-none text-dark"  do %>
+              <%= image_tag @review.member.get_profile_image(100,100) %><br />
+               <i class="far fa-user text-danger"></i><%= @review.member.nick_name %>
+            <% end %>
+          </div>
+        </td>
+        <td>フォロー：<%= @member.followers.count %>件</td><!--フォロー-->
+        <td>いいね♡：<%= @review.likes.count %>件</td><!--いいね-->
+        <td>ブックマーク：<%= @member.bookmarks.count %>件</td><!--ブックマーク-->
+      </tr>
+      <tr>
+        <th>商品名</th>
+        <td><%= @review.title %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>レビュー内容</th>
+        <td colspan ="4"><%= @review.body %></td>
+      </tr>
+      <tr>
+        <th>お値段（税込）</th>
+        <td><%= @review.price%>円</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>地域</th>
+        <td><%= @review.prefecture %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>食品カテゴリー</th>
+        <td><%= @review.food_category%></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>掲載の有</th>
+        <td>
+          <% if @review.is_active == true %>
+            掲載
+          <% end %>
+          <% if @review.is_active == false %>
+            未掲載
+          <% end %>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    </div>
+    <!-- right container end -->
+
+    <!--left container start -->
+    <div class="col-md-3">
+      <p>コメント件数：<%= @review.comments.count %></p>
+    </div>
+    <!--left container end -->
+
+    <!--right container start -->
+    <div class="col-md-8 offset-md-1">
+      <!--コメント反映-->
+      <ul>
+        <% @review.comments.each do |comment| %>
+        <li class="row">
+          <div class="col-3">
+            <div class ="text-center"><%= image_tag comment.member.get_profile_image(100,100) %></div>
+            <div class ="text-center"><%= comment.member.nick_name %></div>
+          </div>
+          <div class="col-9">
+            <div class="text-right"><%= comment.created_at.strftime('%Y/%m/%d') %></div>
+            <div><%= comment.comment %></div>
+            <div class="text-right">
+              <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger btn-sm" %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
     <div class = "text-center">
       <%= link_to "投稿者レビュー一覧をみる", list_admin_member_reviews_path(@member), class: "btn btn-outline-secondary col-6" %>
     </div>
-    
+
     <div class = "text-center mt-3">
       <%= link_to "管理者が編集する", edit_admin_review_path, class: "btn btn-outline-danger col-6" %>
     </div>
     <div class = "text-center mt-3">
       <%= link_to "管理者が削除する", admin_review_path(@review), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-secondary col-6" %>
     </div>
-   
+    </div>
+    <!--right container end-->
+
   </div>
 </div>
