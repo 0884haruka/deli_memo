@@ -8,7 +8,7 @@
 
 Admin.create!(email:"d@d",password:"dddddd")
 
-Members = member.create!(
+Members = Member.create!(
   [
     {email: 'p@p', name: 'pppppp', nick_name: 'ぴー', password: 'pppppp', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")},
     {email: 'o@o', name: 'oooooo', nick_name: 'おー', password: 'oooooo', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
