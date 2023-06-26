@@ -38,6 +38,7 @@ class Public::ReviewsController < ApplicationController
 
   end
 
+
   def edit
     @review = Review.find(params[:id])
   end
@@ -65,9 +66,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def search
-    @reviews = Review.search(params[:keyword])
-    @keyword = params[:keyword]
-    render "review/search"
+    @reviews = Review.public_data.looks("partial_match", params[:word])
+    @tag_prefectures= @reviews.select(:prefecture).distinct
+    @tag_food_category = @reviews.select(:food_category).distinct
   end
 
 

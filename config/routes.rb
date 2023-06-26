@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => 'members#withdraw'
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
-    get "search" => "searches#search"
+    #get "search" => "searches#search"
     get 'search' => 'reviews#search'
     get 'bookmark/index' => 'bookmarks#index'
     devise_scope :member do
