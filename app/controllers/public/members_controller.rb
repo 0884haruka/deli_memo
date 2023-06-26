@@ -9,7 +9,7 @@ class Public::MembersController < ApplicationController
     # @member = menber.reviews
     @member_reviews = @member.reviews.page(params[:page])
     @current_time = Time.current
-    
+
   end
 
   def edit
@@ -36,7 +36,7 @@ class Public::MembersController < ApplicationController
     session.clear
     redirect_to root_path
   end
-  
+
   def destroy
     member = current_member
     member.destroy

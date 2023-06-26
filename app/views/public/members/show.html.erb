@@ -40,7 +40,7 @@
           <i class="fas fa-users text-danger"></i>  <%= @member.followers.count %>
         <% end %>
         </h2>
-  
+
         <h2 style="margin-top: 3px; text-align: center;">\\Book Mark//<br />
           <%= link_to bookmark_index_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
           <%= @member.bookmarks.count %>件
@@ -86,7 +86,7 @@
                 <% if @current_time < review.created_at.since(7.days) %>
                   <div class = "new-mark">
                     <%= image_tag("new.png", alt: "new", width: "40", height: "40") %></div>
-    
+
                 <% end %>
               </td>
               <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
@@ -100,19 +100,20 @@
                 <% end %>
               </td>
               <td>
-                 <% if review.liked_by?(current_member) %>
-                    <p>
-                      <%= link_to review_likes_path(review), method: :delete, class: "text-decoration-none text-dark" do %>
-                        <i class="text-danger ">♥</i><%= review.likes.count %> いいね
-                      <% end %>
-                    </p>
-                    <% else %>
-                    <p>
-                      <%= link_to review_likes_path(review), method: :post, class: "text-decoration-none text-dark" do %>
-                        <i class="text-danger">♡</i><%= review.likes.count %> いいね
-                      <% end %>
-                    </p>
-                  <% end %>
+                <%#= render 'reviews/like', review: @review %><!--いいね-->
+                <% if review.liked_by?(current_member) %>
+                  <p>
+                    <%= link_to review_likes_path(review), method: :delete, class: "text-decoration-none text-dark" do %>
+                      <i class="text-danger ">♥</i><%= review.likes.count %> いいね
+                    <% end %>
+                  </p>
+                  <% else %>
+                  <p>
+                    <%= link_to review_likes_path(review), method: :post, class: "text-decoration-none text-dark" do %>
+                      <i class="text-danger">♡</i><%= review.likes.count %> いいね
+                    <% end %>
+                  </p>
+                <% end %>
               </td>
               <td>
                 <p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
