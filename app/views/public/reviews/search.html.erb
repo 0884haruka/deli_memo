@@ -2,29 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <!--検索、タグ検索機能-->
-    <div class="form-inline">
-     <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
-        <%= select_tag :prefectur_search, options_from_collection_for_select(@tag_prefectures, 'prefecture', 'prefecture'), include_blank: '都道府県を選択してください' %>
-        <%= submit_tag '検索', class: 'btn btn-outline-secondary btn-sm' %>
-      <% end %>
-       &emsp;&emsp;&emsp;
-      <%= form_tag({ controller: 'reviews', action: 'index' }, method: :get) do %>
-        <%= select_tag :food_category_search, options_from_collection_for_select(@tag_food_category, 'food_category', 'food_category'),include_blank: 'フードカテゴリーを選択してください' %>
-        <%= submit_tag '検索', class: 'btn btn-outline-secondary btn-sm' %>
-      <% end %>
-        &emsp;&emsp;&emsp;   
-       <% if member_signed_in? %>
-        <div class="search_form">
-          <%= form_with url: search_path, local: true, method: :get do |f| %>
-            <%= f.text_field :word, placeholder: "商品名やニックネーム、お値段を検索", size: 35 %>
-            <%= f.submit "検索", class: 'btn btn-outline-secondary btn-sm' %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>      
+      
+   <!--検索、タグ検索機能-->
+    <%= render 'search' %>
           
     <ul style="list-style: none;">
+      <!--ゲストログインさん投稿不可、ログインへ飛ぶ-->
       <% if current_member.name != "guestuser" %>
       <li>
         <%= link_to new_review_path, class: "btn custom-button" do %>
@@ -56,19 +39,7 @@
       <td><%= review.title %></td>
       <td><%= review.price%>円</td>
       <td>
-        <% if review.liked_by?(current_member) %>
-        <p>
-          <%= link_to review_likes_path(review), method: :delete do %>
-            <i class="text-danger ">♥</i><%= review.likes.count %> いいね
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to review_likes_path(review), method: :post do %>
-            <i class="text-danger">♡</i><%= review.likes.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
+        <%= render 'like', review: review%>
       </td>
       <td><p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
             <i class="far fa-comment-alt text-danger"></i> <%=review.comments.count %> コメント
