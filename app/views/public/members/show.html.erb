@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3 ">
       <p class="text-danger">
-        <%= notice%>
+        <%= notice %>
       </p>
       <h2 style="text-align: center;">\\Contributor!!//</h2><!-- title -->
         <!-- left container start -->
@@ -27,26 +27,26 @@
           </tbody>
         </table>
         <% if @member.name != 'guestmember' %>
-        <div class="row">
-          <%= link_to edit_mypage_path, class: 'btn btn-outline-secondary btn-block edit_user_108038' do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>
-        </div>
+          <div class="row">
+            <%= link_to edit_mypage_path, class: 'btn btn-outline-secondary btn-block edit_user_108038' do %>
+              <i class="fas fa-user-cog"></i>
+            <% end %>
+          </div>
         <% end %>
         <h2 style="margin-top: 30px; text-align: center;">\\Follow!!//<br />
-        <%= link_to followings_path(member_id: @member.id), class: "text-decoration-none text-dark"  do %>
-          <i class="fas fa-user-plus text-danger"></i>  <%= @member.followings.count %>
-        <% end %>
+          <%= link_to followings_path(member_id: @member.id), class: "text-decoration-none text-dark"  do %>
+            <i class="fas fa-user-plus text-danger"></i>  <%= @member.followings.count %>
+          <% end %>
         </h2>
-          <h2 style="margin-top: 3px; text-align: center;">\\Follower!!//<br />
-        <%= link_to followers_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
-          <i class="fas fa-users text-danger"></i>  <%= @member.followers.count %>
-        <% end %>
+        <h2 style="margin-top: 3px; text-align: center;">\\Follower!!//<br />
+          <%= link_to followers_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
+            <i class="fas fa-users text-danger"></i>  <%= @member.followers.count %>
+          <% end %>
         </h2>
 
         <h2 style="margin-top: 3px; text-align: center;">\\Book Mark//<br />
           <%= link_to bookmark_index_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
-          <%= @member.bookmarks.count %>件
+            <%= @member.bookmarks.count %>件
           <% end %>
         </h2>
     </div>
@@ -112,7 +112,7 @@
               </td>
               <td>
                 <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
-                \\Show//<i class="fas fa-mouse-pointer text-danger"></i>
+                \\Show// <i class="fas fa-mouse-pointer text-danger"></i>
                 <% end %>
               </td>
             </tr>

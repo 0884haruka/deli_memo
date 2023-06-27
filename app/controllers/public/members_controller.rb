@@ -40,7 +40,7 @@ class Public::MembersController < ApplicationController
   def destroy
     member = current_member
     member.destroy
-    flash[:notice] = 'ユーザーを削除しました。'
+    flash[:notice] = '登録を削除しました。'
     redirect_to :root #削除に成功すればrootページに戻る
   end
 

@@ -20,7 +20,7 @@
               <td><%= member.nick_name %></td>
               <td>フォロー数: <%= member.followings.count %></td>
               <td>フォロワー数: <%= member.followers.count %></td>
-              <td><%= link_to mypage_path(current_member), class: "text-decoration-none text-dark" do %>
+              <td><%= link_to mypage_path(member), class: "text-decoration-none text-dark" do %>
                   \\Review Details Page!!// <i class="fas fa-mouse-pointer text-danger"></i>
                   <% end %>
               </td>
