@@ -30,10 +30,10 @@
 }
 
 .page-list{
-   .pagination{
-     display: block;
-     text: decoration-none;
-     text-color: #6c6b6b;
+  .pagination{
+    display: block;
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
    }
 }
 
