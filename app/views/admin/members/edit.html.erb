@@ -1,31 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 form-center">
+    <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
       <p id="notice"></p>
-      <h3>\\<%= @member.nick_name %>さんの情報編集ページ!!//</h3>
+      <h3>\\Information Editing Page!!//</h3>
+      <%= @member.nick_name %>さんの編集ページ
 	    <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
-      <h6>お名前</h6>
-      <div class = "form-group">
-        <%= f.text_field :name %>
-      </div>
-      <h6>ニックネーム</h6>
-      <div class = "form-group">
-        <%= f.text_field :nick_name %>
-      </div>
-      <h6>Profile Image</h6>
-      <div class = "form-group">
-        <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
-      </div>
-      <h6>Introduction</h6>
-      <div class = "form-group">
-        <%= f.text_area :introduction %>
-      </div>
-      <div class = "form-group">
-        <%= f.submit '情報を更新する',class:"btn btn-outline-secondary col-6" %>
+        <table class ='table'>
+          <tr>
+            <th>Name</th>
+            <td><%= f.text_field :name, class: "custom-input", size: "30"  %></td>
+          </tr>
+          <tr>
+            <th>Nick Name</th>
+            <td><%= f.text_field :nick_name, class: "custom-input", size: "30"  %></td>
+          </tr>
+          <tr>
+            <th>Profile Image</th>
+            <td><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %></td>
+          </tr>
+           <tr>
+             <th>Introduction</th>
+             <td><%= f.text_area :introduction, class: "custom-input", size: "30"  %></td>
+           </tr>
+        </table>  
+        <div class="text-center">
+          <%= f.submit '情報を更新する',class:"btn btn-outline-secondary col-6" %>
+        </div>
       </div>
     <% end %>
     </div>
-		<%= link_to "編集せずに戻る",admin_member_path(@member.id), class: "btn btn-outline-danger col-6"  %>
+    <div class="text-center">
+		  <%= link_to "編集せずに戻る",admin_member_path(@member.id), class: "btn btn-outline-danger col-3 mt-3" %>
+		</div>
 		</div>
   </div>
 </div>

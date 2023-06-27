@@ -39,7 +39,10 @@
              ♡<%= review.likes.count %> いいね
           </td>
           <td><p><%= "#{review.comments.count} コメント" %></p></td>
-          <td><%= link_to "Show",admin_review_path(review.id) %></td>
+          <td><%= link_to admin_review_path(review.id), class: "text-decoration-none text-dark" do %>
+            \\Show// <i class="fas fa-mouse-pointer text-danger"></i>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </table>

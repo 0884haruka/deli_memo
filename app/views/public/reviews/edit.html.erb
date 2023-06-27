@@ -1,37 +1,44 @@
 <p id="notice"></p>
   <div class="container">
+    <div class="row">
+      <!--title-->
       <div class="col-md-12">
-        <h2>\\編集ページ!!//</h2>
-       </div>
+        <h2>\\Post Edit Page!!//</h2>
+      </div>
+        
+      <!--left  start-->
+      <div class="col-md-5">
         <%= form_with model: @review, method: :patch do |f| %>
-        <div class="row">
-        <div class="col-md-6">
-          <table>
-            <tr>
-              <th>商品画像</th>
-              <td>
-                <div>
-              <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
-              <br />
-              <%= f.file_field :review_image, accept: "image/*" %>
+        <table class ='table'>
+          <tr>
+            <th>商品画像</th>
+            <td>
+              <div>
+                <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
+                <br />
+                <br />
+                <%= f.file_field :review_image, accept: "image/*" %>
               </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-md-6">
-        <table>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--left  end-->
+      
+      <!--right  start-->
+      <div class="col-md-6">
+        <table class ='table'>
           <tr>
             <th>商品名</th><br />
-            <td><%= f.text_field :title, class: "custom-input" %></td>
+            <td><%= f.text_field :title, class: "custom-input", size: "30" %></td>
           </tr>
           <tr>
             <th>レビュー内容</th>
-            <td><%= f.text_area :body, class: "custom-input" %></td>
+            <td><%= f.text_area :body, class: "custom-input", size: "30" %></td>
           </tr>
           <tr>
             <th>お値段</th>
-            <td><%= f.text_field :price, class: "custom-input" %>円</td>
+            <td><%= f.text_field :price, class: "custom-input", placeholder: "半角数字" %>円</td>
           </tr>
           <tr>
             <th>地域</th>
@@ -51,8 +58,12 @@
             </td>
           </tr>
         </table>
-         <%= f.submit '変更を保存', class: "btn btn-outline-secondary col-6 mt-5" %>
-        </div>
+          <div class="text-right">
+            <%= f.submit '変更を保存', class: "btn btn-outline-secondary col-6 mt-5" %>
+          </div>
+      </div>
         <% end %>
+      <!--right  end-->
+
     </div>
   </div>

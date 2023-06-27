@@ -18,33 +18,33 @@
 
       </div>
       <%= form_with model: @review do |f| %>
-        <table>
+        <table class ='table'>
           <tr>
-            <th>お取り寄せ画像</th>
+            <th class="col-5 custom-td">お取り寄せ画像</th>
             <td><%= f.file_field :review_image, accept: "image/*" %></td>
           </tr>
           <tr>
-            <th>お取り寄せ商品名</th>
+            <th class="col-5 custom-td">お取り寄せ商品名</th>
             <td><%= f.text_field :title, class: "custom-input", size: "30" %></td>
           </tr>
           <tr>
-            <th>お取り寄せ商品レビュー</th>
+            <th class="col-5 custom-td">お取り寄せ商品レビュー</th>
             <td><%= f.text_area :body, class: "custom-input",size: "30" %></td>
           </tr>
           <tr>
-            <th>地域</th>
+            <th class="col-5 custom-td">地域</th>
             <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {:include_blank => "都道府県を選択ください"} %></td>
           </tr>
           <tr>
-            <th>食品カテゴリー</th>
+            <th class="col-5 custom-td">食品カテゴリー</th>
             <td><%= f.select :food_category, Review.food_categories.keys.to_a, { :include_blank => "カテゴリを選択ください"} %></td>
           </tr>
           <tr>
-            <th>税込価格</th>
+            <th class="col-5 custom-td">税込価格</th>
             <td><%= f.text_field :price, class: "custom-input" %>円</td>
           </tr>
           <tr>
-            <th>掲載ステータス</th>
+            <th class="col-5 custom-td">掲載ステータス</th>
             <td>
               <%= f.label :sales_status_on_sale, '掲載する' %>
               <%= f.radio_button :is_active, :true %>
