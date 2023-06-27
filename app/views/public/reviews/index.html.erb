@@ -55,7 +55,7 @@
           </td>
           <td>
             <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
-            \\Show//<i class="far fa-hand-point-up text-danger"></i>
+            \\Show// <i class="fas fa-mouse-pointer text-danger"></i>
             <% end %>
           </td>
         </tr>
@@ -64,6 +64,4 @@
 
   </div>
 </div>
-<div class="page-list text-center">
-  <%= paginate @reviews %>
-</div>
+<%= paginate @reviews %>

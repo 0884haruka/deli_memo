@@ -1,68 +1,78 @@
-<p id="notice"></p>
+
   <div class="container">
-    <div class="row">
-      <!--title-->
-      <div class="col-md-12">
-        <h2>\\Post Edit Page!!//</h2>
-      </div>
-        
-      <!--left  start-->
-      <div class="col-md-5">
-        <%= form_with model: @review, method: :patch do |f| %>
-        <table class ='table'>
-          <tr>
-            <th>商品画像</th>
-            <td>
-              <div>
-                <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
-                <br />
-                <br />
-                <%= f.file_field :review_image, accept: "image/*" %>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <!--left  end-->
-      
-      <!--right  start-->
-      <div class="col-md-6">
-        <table class ='table'>
-          <tr>
-            <th>商品名</th><br />
-            <td><%= f.text_field :title, class: "custom-input", size: "30" %></td>
-          </tr>
-          <tr>
-            <th>レビュー内容</th>
-            <td><%= f.text_area :body, class: "custom-input", size: "30" %></td>
-          </tr>
-          <tr>
-            <th>お値段</th>
-            <td><%= f.text_field :price, class: "custom-input", placeholder: "半角数字" %>円</td>
-          </tr>
-          <tr>
-            <th>地域</th>
-            <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {} %></td>
-          </tr>
-          <tr>
-            <th>カテゴリー</th>
-            <td><%= f.select :food_category, Review.food_categories.keys.to_a, {} %></td>
-          </tr>
-          <tr>
-            <th>販売ステータス</th>
-            <td>
-              <%= f.label :sales_status_on_sale, '掲載する' %>
-              <%= f.radio_button :is_active, :true %>
-              <%= f.label :sales_status_draft, '掲載しない' %>
-              <%= f.radio_button :is_active, :false, checked: true %>
-            </td>
-          </tr>
-        </table>
-          <div class="text-right">
-            <%= f.submit '変更を保存', class: "btn btn-outline-secondary col-6 mt-5" %>
-          </div>
-      </div>
+    <!--エラーメッセージとtitle-->
+    <!--<div class="col-md-12">-->
+      <div class="errors text-danger">
+        <% if @review.errors.any? %>
+          <%= @review.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
+      </div>
+      <h2>\\Post Edit Page!!//</h2>
+    <!--</div>-->
+
+      <%= form_with model: @review, method: :patch do |f| %>
+        <!--left  start-->
+        <div class="row">
+          <div class="col-md-5">
+            <table class ='table'>
+              <tr>
+                <th>商品画像</th>
+                <td>
+                  <div>
+                    <%= image_tag @review.review_image.variant(resize:'300x300') if @review.review_image.attached? %>
+                    <br />
+                    <br />
+                    <%= f.file_field :review_image, accept: "image/*" %>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        　<!--left  end-->
+
+          <!--right  start-->
+          <div class="col-md-6">
+            <table class='table'>
+              <tr>
+                <th>商品名</th>
+                <td><%= f.text_field :title, class: "custom-input", size: "30" %></td>
+              </tr>
+              <tr>
+                <th>レビュー内容</th>
+                <td><%= f.text_area :body, class: "custom-input", size: "30" %></td>
+              </tr>
+              <tr>
+                <th>お値段</th>
+                <td><%= f.text_field :price, class: "custom-input", placeholder: "半角数字" %>円</td>
+              </tr>
+              <tr>
+                <th>地域</th>
+                <td><%= f.select :prefecture, Review.prefectures.keys.to_a, {} %></td>
+              </tr>
+              <tr>
+                <th>カテゴリー</th>
+                <td><%= f.select :food_category, Review.food_categories.keys.to_a, {} %></td>
+              </tr>
+              <tr>
+                <th>��売ステータス</th>
+                <td>
+                  <%= f.radio_button :is_active, true, checked: @review.is_active %>
+                  <%= f.label :is_active_true, '掲載する' %>
+                  <%= f.radio_button :is_active, false, checked: !@review.is_active %>
+                  <%= f.label :is_active_false, '掲載しない' %>
+                </td>
+              </tr>
+            </table>
+            <div class="text-right">
+              <%= f.submit '変更を保存', class: "btn btn-outline-secondary col-6 mt-5" %>
+            </div>
+          </div>
+      <% end %>
       <!--right  end-->
 
     </div>

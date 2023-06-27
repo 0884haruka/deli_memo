@@ -19,7 +19,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     if@member.update(member_params)
-      flash[:notice] = "You have update."
+      flash[:notice] = "情報を更新しました"
       redirect_to  mypage_path(current_member)
     else
       render :edit

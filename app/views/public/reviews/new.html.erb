@@ -1,22 +1,20 @@
-<p id="notice"></p>
 <div class="container">
   <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-12 col-md-9 col-lg-7 px-5 px-sm-0 mx-auto">
 
-        <h2>\\New Review Post!!//</h2>
-
-        <div class="errors text-danger">
-          <% if @review.errors.any? %>
-          <%= @review.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @review.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+      <div class="errors text-danger">
+        <% if @review.errors.any? %>
+        <%= @review.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
           <% end %>
-        </div>
-
+        </ul>
+        <% end %>
       </div>
+
+      <h2>\\New Review Post!!//</h2>
+
       <%= form_with model: @review do |f| %>
         <table class ='table'>
           <tr>
@@ -25,11 +23,11 @@
           </tr>
           <tr>
             <th class="col-5 custom-td">お取り寄せ商品名</th>
-            <td><%= f.text_field :title, class: "custom-input", size: "30" %></td>
+            <td><%= f.text_field :title, class: "custom-input", size: "40" %></td>
           </tr>
           <tr>
             <th class="col-5 custom-td">お取り寄せ商品レビュー</th>
-            <td><%= f.text_area :body, class: "custom-input",size: "30" %></td>
+            <td><%= f.text_area :body, class: "custom-input",size: "40" %></td>
           </tr>
           <tr>
             <th class="col-5 custom-td">地域</th>
@@ -41,7 +39,7 @@
           </tr>
           <tr>
             <th class="col-5 custom-td">税込価格</th>
-            <td><%= f.text_field :price, class: "custom-input" %>円</td>
+            <td><%= f.text_field :price, class: "custom-input", placeholder: "半角数字" %>円</td>
           </tr>
           <tr>
             <th class="col-5 custom-td">掲載ステータス</th>
@@ -55,11 +53,11 @@
           <tr>
             <td></td>
             <td align="right">
-              <%= f.submit "\\Let's write!//", class: "btn btn-outline-dark" %>
+              <%= f.submit "\\\\Let's write!//", class: "btn btn-outline-secondary" %>
             </td>
           </tr>
         </table>
       <% end %>
-
+    </div>
   </div>
 </div>

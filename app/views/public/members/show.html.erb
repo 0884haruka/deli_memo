@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 ">
+      <p class="text-danger">
+        <%= notice%>
+      </p>
       <h2 style="text-align: center;">\\Contributor!!//</h2><!-- title -->
         <!-- left container start -->
         <div style="text-align: center;">
@@ -100,20 +103,7 @@
                 <% end %>
               </td>
               <td>
-                <%#= render 'reviews/like', review: @review %><!--いいね-->
-                <% if review.liked_by?(current_member) %>
-                  <p>
-                    <%= link_to review_likes_path(review), method: :delete, class: "text-decoration-none text-dark" do %>
-                      <i class="text-danger ">♥</i><%= review.likes.count %> いいね
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to review_likes_path(review), method: :post, class: "text-decoration-none text-dark" do %>
-                      <i class="text-danger">♡</i><%= review.likes.count %> いいね
-                    <% end %>
-                  </p>
-                <% end %>
+                <%= render '/public/reviews/like', review: review %><!--いいね-->
               </td>
               <td>
                 <p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
@@ -131,9 +121,9 @@
         </div>
      <!-- right container end  -->
       </div>
-      <div class="page-list text-center">
+
         <%= paginate @member_reviews %>
-      </div>
+
       <div class="text-right mt-5">
           <%= link_to reviews_path, class: "btn custom-button" do %>
           <h2>

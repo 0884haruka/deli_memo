@@ -68,3 +68,6 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+gem 'rails-i18n', '~> 6.0'
+gem 'devise-i18n'

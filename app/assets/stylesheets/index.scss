@@ -5,6 +5,14 @@
   // color: #6c6b6b;
 }
 
+.header{
+  width: 100%; /* 横幅いっぱい */
+  height: 300px; /* 高さ300px */
+  background-image: url(/app/assets/images/header.png);
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+}
+
 .top-image-container {
   display: flex;
 }
@@ -32,12 +40,15 @@
 .page-list{
   .pagination{
     display: block;
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
    }
+   
 }
 
-
+.welcome{
+  height: rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
 
 .new-review{
    margin-top: 50px;
@@ -49,4 +60,22 @@
     right: 50%;
     transform: translateX(50%);
     top: 40%;
+}
+
+.pagination>li>a {          
+  border: none;     
+  color: #696969;   
+}
+
+.pagination>.active>a {     
+  background: #b2b5a8;     
+  border-radius: 15px !important;     
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px !important;   
+}
+
+.pagination {
+  justify-content: center;
 }

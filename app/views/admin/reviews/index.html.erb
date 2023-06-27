@@ -47,11 +47,10 @@
         <% end %>
       </table>
     </div>
-    <div class="page-list text-center">
-      <%= paginate @reviews %>
-    </div>
+ 
+    <%= paginate @reviews %>
     <div class="text-center mt-5">
-      <%= link_to "ひとつ前に戻る", :back, class: "btn btn-outline-danger col-6" %>
+      <%= link_to "ひとつ前に戻る", :back, class: "btn btn-outline-secondary col-３" %>
     </div>
   </div>
 </div>
