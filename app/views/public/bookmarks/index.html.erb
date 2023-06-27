@@ -1,18 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
         <h2>
           <i class="far fa-bookmark"></i>\\Bookmark List!!//<i class="far fa-bookmark"></i>
         </h2>
-        <table>
+        <table class ='table'>
           <thead>
             <tr>
-              <th class="custom-header"></th>
-              <th class="custom-header"></th>
-              <th class="custom-header">商品名</th>
-              <th class="custom-header"></th>
-              <th class="custom-header"></th>
-              <th class="custom-header"></th>
+              <th></th>
+              <th></th>
+              <th>商品名</th>
+              <th></th>
             </tr>
             </thead>
               <tbody>
@@ -31,7 +28,7 @@
                     <td><%= bookmark.review.title %></td>
                     <td>
                       <p><%= link_to review_path(bookmark.review_id), class: "text-decoration-none text-dark" do %>
-                      詳細ページはこちら
+                      \\Review Details Page!!// <i class="fas fa-mouse-pointer text-danger"></i>
                       <% end %></p>
                     </td>
                   </tr>
