@@ -20,7 +20,10 @@
               <td><%= member.nick_name %></td>
               <td>フォロー数: <%= member.followings.count %></td>
               <td>フォロワー数: <%= member.followers.count %></td>
-              <td><%= link_to "Show",mypage_path(current_member) %></td>
+              <td><%= link_to mypage_path(current_member), class: "text-decoration-none text-dark" do %>
+                  \\Show!!// <i class="fas fa-mouse-pointer text-danger"></i>
+                  <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>
@@ -28,11 +31,11 @@
     <% else %>
       <p>ユーザーはいません</p>
     <% end %>
+    </div>
     <div class="text-right mt-3">
-      <%= link_to followers_path(member_id: current_member.id) do %>
-        <h3>\\Followew!!//</h3>
+      <%= link_to followers_path(member_id: current_member.id), class: "text-decoration-none text-dark" do %>
+        <h3>\\Followew!!//<i class="far fa-hand-point-up text-danger"></i></h3>
         <h6>Click here for follower list!!!</h6>
       <% end %>
-    </div>
    </div>
  </div>
