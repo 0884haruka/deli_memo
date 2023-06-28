@@ -28,12 +28,12 @@
         <div class="text-center">
           <%= f.submit '情報を更新する',class:"btn btn-outline-secondary col-6" %>
         </div>
+        <div class="text-center">
+      		<%= link_to "編集せずに戻る",admin_member_path(@member.id), class: "btn btn-outline-danger col-6 mt-3" %>
+      	</div>
       </div>
     <% end %>
     </div>
-    <div class="text-center">
-		  <%= link_to "編集せずに戻る",admin_member_path(@member.id), class: "btn btn-outline-danger col-3 mt-3" %>
-		</div>
 		</div>
   </div>
 </div>

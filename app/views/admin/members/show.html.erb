@@ -23,7 +23,7 @@
 					<td><%= @member.email %></td>
 				</tr>
 		  </table>
-		
+
 			<div class = "text-center mt-3">
 				<%= link_to "#{@member.nick_name}さんの情報を編集する", edit_admin_member_path, class: "btn custom-button btn-outline-danger col-6" %>
 			</div>
@@ -33,7 +33,7 @@
 			<div class = "text-center mt-3">
 				<%= link_to "会員情報・投稿を全て削除する",admin_member_path(@member), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn custom-button btn-outline-danger col-6"%>
 	    </div>
-	    
+
     </div>
   </div>
 </div>
