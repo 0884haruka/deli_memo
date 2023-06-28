@@ -1,30 +1,36 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
       <p id="notice"></p>
       <h2>\\Member information change!!//<i class="fas fa-pencil-alt"></i></h2>
 
       <%= form_with model: @member, url: edit_mypage_path, method: :patch do |f| %>
-        <h6>Name</h6>
-        <div class="form-group">
-          <%= f.text_field :name, class:"col-6" %>
-        </div>
-        <h6>Nick Newame</h6>
-        <div class="form-group">
-          <%= f.text_field :nick_name, class:"col-6" %>
-        </div>
-        <h6>Image</h6>
-        <div class="form-group">
-          <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
-        </div>
-        <h6>Introduction</h6>
-        <div class="form-group">
-          <%= f.text_area :introduction, class:"col-6" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit '情報を更新する', class: "btn btn-secondary col-6" %>
+        <table class ='table'>
+          <tr>
+            <th>Name</th>
+            <td><%= f.text_field :name, class:"col-6" %></td>
+          </tr>
+          <tr>
+            <th>Nick Newame</th>
+            <td><%= f.text_field :nick_name, class:"col-6" %></td>
+          </tr>
+          <tr>
+            <th>Image</th>
+            <td><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th>Introduction</th>
+            <td><%= f.text_area :introduction, class:"col-6" %></td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <%= f.submit '情報を更新する', class: "btn btn-outline-secondary col-6" %>
         </div>
       <% end %>
-      <%= link_to "退会する", members_confirm_path, class: "btn custom-button btn-outline-danger col-6" %>    </div>
+        <div class="text-center mt-3">
+          <%= link_to members_confirm_path, class: "btn custom-button btn-outline-danger col-6" do %>
+          退会する
+          <% end %>
+        </div>
   </div>
 </div>

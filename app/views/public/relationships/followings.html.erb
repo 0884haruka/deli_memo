@@ -1,5 +1,4 @@
- <p id="notice"></p>
- <div class="container">
+<div class="container">
    <div class="row">
     <h2>\\Follow!!//<i class="fas fa-user-plus"></i></h2>
         <table class ='table'>
@@ -27,11 +26,11 @@
             </tr>
             <% end %>
           </tbody>
+            <% else %>
+              <p>　　ユーザーはいません</p>
+            <% end %>
         </table>
-    <% else %>
-      <p>ユーザーはいません</p>
-    <% end %>
-    </div>
+      </div>
     <div class="text-right mt-3">
       <%= link_to followers_path(member_id: current_member.id), class: "text-decoration-none text-dark" do %>
         <h3>\\Followew!!//<i class="far fa-hand-point-up text-danger"></i></h3>

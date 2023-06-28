@@ -1,7 +1,9 @@
 </div><div class="container">
   <div class="row">
     <div class="col-md-12">
-      <p id="notice"></p>
+      <p class="text-danger">
+        <%= notice %>
+      </p>
       <h2>\\Members Details Page//</h2>
       <%= @member.nick_name %>さんの投稿一覧
 
@@ -11,6 +13,7 @@
       <th class="custom-header"></th>
       <th class="custom-header">商品名</th>
       <th class="custom-header">掲載表示</th>
+      <th class="custom-header"></th>
       <th class="custom-header"></th>
       <th class="custom-header"></th>
     </tr>
@@ -24,7 +27,7 @@
         <% end %>
       </td>
       <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
-      <td><%= review.title %></td>
+      <td class ="col-4"><%= review.title %></td>
       <td> <% if review.is_active == true %>
               掲載
             <% end %>
@@ -36,7 +39,11 @@
          ♡<%= review.likes.count %> いいね
       </td>
       <td><p><%= "#{review.comments.count} コメント" %></p></td>
-      <td><%= link_to "Show",admin_review_path(review.id) %></td>
+      <td>
+        <%= link_to admin_review_path(review.id), class: "text-decoration-none text-dark" do %>
+          \\Show!!// <i class="fas fa-mouse-pointer text-danger"></i>
+        <% end %>
+        </td>
     </tr>
     <% end %>
   </table>

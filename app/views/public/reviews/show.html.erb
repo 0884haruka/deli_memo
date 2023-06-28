@@ -31,11 +31,8 @@
         <td><%= render 'bookmark', review: @review %></td><!--ブックマーク-->
       </tr>
       <tr>
-        <th>商品名</th>
-        <td><%= @review.title %></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <th class = "col-2">商品名</th>
+        <td colspan ="4"><%= @review.title %></td>
       </tr>
       <tr>
         <th>レビュー内容</th>

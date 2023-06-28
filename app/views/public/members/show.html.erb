@@ -46,7 +46,7 @@
 
         <h2 style="margin-top: 3px; text-align: center;">\\Book Mark//<br />
           <%= link_to bookmark_index_path(member_id: @member.id), class: "text-decoration-none text-dark" do %>
-            <%= @member.bookmarks.count %>件
+            <i class="far fa-bookmark text-danger"></i>  <%= @member.bookmarks.count %>件
           <% end %>
         </h2>
     </div>
@@ -80,6 +80,7 @@
               <th class="custom-header"></th>
               <th class="custom-header">商品名</th>
               <th class="custom-header">掲載の有無</th>
+              <th class="custom-header"></th>
               <th class="custom-header"></th>
               <th class="custom-header"></th>
             </tr>

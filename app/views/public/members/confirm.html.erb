@@ -2,15 +2,18 @@
   <div class="row justify-content-center font-weight-bold">
     <p>本当に退会しますか？</p>
   </div>
+  <div class="row justify-content-center font-weight-bold">
+    <p>今まで投稿したもの全て消えてしまいますが、よろしいですか？？</p>
+  </div>
   <div class="row justify-content-center">
-    
-  <div class="row justify-content-center">
-    <%= link_to edit_members_path do %>
-      <button class="btn custom-button">退会しない</button>
-    <% end %>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to member_destroy_path, method: :delete do %>
-      <button class="btn delete-button">退会する</button>
-    <% end %>
+    <div class="row">
+      <%= link_to edit_members_path do %>
+        <button class="btn btn-outline-secondary">退会しない</button>
+      <% end %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to member_destroy_path, method: :delete do %>
+        <button class="btn btn-outline-danger">退会する</button>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -34,6 +34,7 @@
           <th class="custom-header">お値段</th>
           <th class="custom-header"></th>
           <th class="custom-header"></th>
+          <th class="custom-header"></th>
         </tr>
         <% @reviews.order(created_at: :desc).each do |review| %>
         <!--新着から呼び出す-->
@@ -46,7 +47,7 @@
             <% end %>
           </td>
           <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
-          <td><%= review.title %></td>
+          <td class ="col-4"><%= review.title %></td>
           <td><%= review.price%>円</td>
           <td><%= render 'like', review: review %></td>
           <td><p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
