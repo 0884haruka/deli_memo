@@ -1,13 +1,9 @@
 <% if review.liked_by?(current_member) %>
-  <p>
-    <%= link_to review_likes_path(review), method: :delete, class: "text-decoration-none text-dark" do %>
-      <i class="text-danger ">♥</i><%= review.likes.count %> いいね
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-    <%= link_to review_likes_path(review), method: :post, class: "text-decoration-none text-dark" do %>
-      <i class="text-danger">♡</i><%= review.likes.count %> いいね
-    <% end %>
-  </p>
+  <%= link_to review_likes_path(review), method: :delete, remote: :true do %>
+    <i class="text-danger ">♥</i><%= review.likes.count %>いいね
+　<% end %>
+<% else %>
+　<%= link_to review_likes_path(review), method: :post, remote: true do %>
+    <i class="text-danger ">♡</i><%= review.likes.count %>いいね
+　<% end %>
 <% end %>

@@ -49,7 +49,12 @@
           <td><%= image_tag review.review_image.variant(resize:'100x100') if review.review_image.attached? %></td>
           <td class ="col-4"><%= review.title %></td>
           <td><%= review.price%>円</td>
-          <td><%= render 'like', review: review %></td>
+          <!--iine 非同期通信-->
+          <td>
+            <div id = "like_<%= review.id %>">
+              <%= render partial: "like", locals: { review: review } %>
+            </div>
+        　</td>
           <td><p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
                 <i class="far fa-comment-alt text-danger"></i> <%=review.comments.count %> コメント
                 <% end %></p>

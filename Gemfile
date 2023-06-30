@@ -71,3 +71,4 @@ gem "net-imap"
 
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
+gem 'jquery-rails'
