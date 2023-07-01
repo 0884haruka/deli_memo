@@ -42,7 +42,9 @@
       <td class ="col-4"><%= review.title %></td>
       <td><%= review.price%>円</td>
       <td>
-        <%= render 'like', review: review%>
+        <div id = "like_<%= review.id %>">
+          <%= render partial: "like", locals: { review: review } %>
+        </div>
       </td>
       <td><p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
             <i class="far fa-comment-alt text-danger"></i> <%=review.comments.count %> コメント

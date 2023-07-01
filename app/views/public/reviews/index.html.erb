@@ -55,9 +55,13 @@
               <%= render partial: "like", locals: { review: review } %>
             </div>
         　</td>
-          <td><p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
-                <i class="far fa-comment-alt text-danger"></i> <%=review.comments.count %> コメント
-                <% end %></p>
+          <td>
+            <p>
+              <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>
+                <i class="far fa-comment-alt text-danger"></i> 
+                <span id="comment_count"><%=review.comments.count %> コメント</span>
+              <% end %>
+            </p>
           </td>
           <td>
             <%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>

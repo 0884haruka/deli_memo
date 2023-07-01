@@ -9,9 +9,13 @@
       <div class="text-right"><%= comment.created_at.strftime('%Y/%m/%d') %></div>
       <div><%= comment.comment %></div>
       <div class="text-right">
-        <% if comment.member == current_member %>
-          <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger btn-sm" %>
-        <% end %>
+        <span id ="comment_delete">
+          <% if comment.member == current_member %>
+            <%= link_to "削除", review_comment_path(review, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, remote: true, class: "btn btn-outline-danger btn-sm" %>
+            <%#= link_to "削除", review_comment_path(review, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, remote: true, class: "btn btn-outline-danger btn-sm comment-delete-link" %>
+
+          <% end %>
+        </span>
       </div>
     </div>
   </li>

@@ -29,7 +29,11 @@
           </div>
         </td>
         <td><%= render 'following', member: @member %></td><!--フォロー-->
-        <td><%= render 'like', review: @review %></td><!--いいね-->
+        <td>
+          <div id = "like_<%= @review.id %>">
+            <%= render partial: "like", locals: { review: @review } %>
+          </div>
+        </td><!--いいね非同期通信-->
         <td><%= render 'bookmark', review: @review %></td><!--ブックマーク-->
       </tr>
       <tr>
@@ -82,15 +86,18 @@
     <!--left container start -->
     <div class="col-md-3">
       <!--コメント欄-->
-     <%= render 'comment_field', review: @review, comment: @comment %>
+      <div class ="comment_field" >
+        <%= render 'comment_field', review: @review, comment: @comment %>
+      </div>
     </div>
     <!--left container end -->
 
     <!--right container start-->
     <div class="col-md-8 offset-md-1">
       <!--コメント反映-->
-      <%= render 'comment', review: @review %>
-
+      <div id="comment">
+        <%= render 'comment', review: @review %>
+      </div>
       <% if @member == current_member %>
       <div class = "text-center">
         <%= link_to "編集する", edit_review_path, class: "btn btn-outline-secondary col-6" %>

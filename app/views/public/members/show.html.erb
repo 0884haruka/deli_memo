@@ -104,7 +104,9 @@
                 <% end %>
               </td>
               <td><!--いいね-->
-                <%= render '/public/reviews/like', review: review %><!--いいね-->
+                <div id = "like_<%= review.id %>">
+                  <%= render partial: "public/reviews/like", locals: { review: review } %>
+                </div>
               </td>
               <td>
                 <p><%= link_to review_path(review.id), class: "text-decoration-none text-dark" do %>

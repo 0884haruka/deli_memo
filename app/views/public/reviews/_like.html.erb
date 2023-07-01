@@ -1,9 +1,12 @@
 <% if review.liked_by?(current_member) %>
-  <%= link_to review_likes_path(review), method: :delete, remote: :true do %>
+  <%= link_to review_likes_path(review_id: review.id), method: :delete, remote: :true,class: "text-decoration-none text-dark" do %>
     <i class="text-danger ">♥</i><%= review.likes.count %>いいね
-　<% end %>
+  <% end %>
 <% else %>
-　<%= link_to review_likes_path(review), method: :post, remote: true do %>
+  <%= link_to review_likes_path(review_id: review.id), method: :post, remote: true,class: "text-decoration-none text-dark" do %>
     <i class="text-danger ">♡</i><%= review.likes.count %>いいね
-　<% end %>
+  <% end %>
 <% end %>
+
+<!--非同期通信のため、（, remote: :true）を追加-->
+<!--注意 ２行目、６行目のreview_id、like_controllerの定義しているものと同じか確認-->

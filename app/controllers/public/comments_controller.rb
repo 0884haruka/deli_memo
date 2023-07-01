@@ -4,13 +4,14 @@ class Public::CommentsController < ApplicationController
     @member = @review.member
     @comment = current_member.comments.new(comment_params)
     @comment.review_id = @review.id
-    flash[:alert] = "コメントが空です!!" unless @comment.save
-    redirect_to request.referer
+    flash[:alert] = "コメントが空です!!" unless @comment.save!
+    #redirect_to request.referer　非同期通信するためリダイレクト先削除
   end
 
   def destroy
+    @review = Review.find(params[:review_id])
     Comment.find(params[:id]).destroy
-    redirect_to request.referer
+    # redirect_to request.referer　非同期通信するためリダイレクト先削除
   end
 
   private

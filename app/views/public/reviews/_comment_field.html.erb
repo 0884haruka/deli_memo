@@ -1,11 +1,14 @@
 <div class="comment">
   <% if flash[:alert] %>
-  <div class="alert text-danger">
-    <%= flash[:alert] %>
-  </div>
+    <div class="alert text-danger">
+      <%= flash[:alert] %>
+    </div>
   <% end %>
-  <i class="far fa-comment-alt text-danger"></i>コメント件数：<%= review.comments.count %>
-  <%= form_with model: [review, comment] do |f| %>
+  <i class="far fa-comment-alt text-danger"></i>コメント件数：
+  <span id="comment_count">
+    <%= review.comments.count %>
+  </span>
+  <%= form_with model: [review, comment], local: false do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
     <div class="text-right"><%= f.submit "送信する", class: "btn btn-outline-secondary"  %></div>
   <% end %>
