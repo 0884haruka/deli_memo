@@ -39,7 +39,7 @@
 - SNS以上に信用できる口コミレビューサイトと感じてもらった時
 
 ## 設計書
-
+https://drive.google.com/file/d/1fK5O4Sk9LvffwiTyK4zLHwQRObKSmb0f/view?usp=sharing
 
 ## 開発環境
 Ruby on Rails
