@@ -39,7 +39,7 @@
 - SNS以上に信用できる口コミレビューサイトと感じてもらった時
 
 ## 設計書
-pdf-lib (https://github.com/Hopding/pdf-lib)
+
 
 ## 開発環境
 Ruby on Rails
