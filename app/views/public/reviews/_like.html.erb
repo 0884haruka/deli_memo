@@ -1,9 +1,9 @@
 <% if review.liked_by?(current_member) %>
-  <%= link_to review_likes_path(review_id: review.id), method: :delete, remote: :true,class: "text-decoration-none text-dark" do %>
+  <%= link_to review_likes_path(review_id: review.id), method: :delete, remote: :true, class: "text-decoration-none text-dark" do %>
     <i class="text-danger ">♥</i><%= review.likes.count %>いいね
   <% end %>
 <% else %>
-  <%= link_to review_likes_path(review_id: review.id), method: :post, remote: true,class: "text-decoration-none text-dark" do %>
+  <%= link_to review_likes_path(review_id: review.id), method: :post, remote: true, class: "text-decoration-none text-dark" do %>
     <i class="text-danger ">♡</i><%= review.likes.count %>いいね
   <% end %>
 <% end %>

@@ -8,15 +8,15 @@ class Member < ApplicationRecord
   has_one_attached :profile_image
   has_many :likes, dependent: :destroy
   has_many :liked_members, through: :likes, source: :review #いいねランキング
-  
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  
+
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   #いいねブックマーク
   has_many :bookmarks, dependent: :destroy
 
@@ -28,11 +28,11 @@ class Member < ApplicationRecord
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def liked_by?(member)
     likes.exists?(member_id: member.id)
   end
-  
+
     # フォローしたときの処理
   def follow(member_id)
     relationships.create(followed_id: member_id)
@@ -42,8 +42,8 @@ class Member < ApplicationRecord
     relationships.find_by(followed_id: member_id).destroy
   end
   # フォローしているか判定
-  def following?(member)
-    followings.include?(member)
+  def following?(member_id)
+    followings.include?(member_id)
   end
 
   def self.guest
@@ -51,7 +51,7 @@ class Member < ApplicationRecord
       member.password = SecureRandom.urlsafe_base64
     end
   end
-  
+
   def self.looks(search, word)
     if search == "partial_match"
       @member = Member.where("name LIKE?","%#{word}%")
@@ -59,5 +59,5 @@ class Member < ApplicationRecord
       @member = Member.all
     end
   end
-  
+
 end
