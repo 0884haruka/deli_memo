@@ -1,5 +1,7 @@
 <% if review.bookmarked_by?(current_member) %>
-  <%= link_to "ブックマークを外す", review_bookmarks_path(review), method: :delete, class: "text-decoration-none text-dark" %>
+  <%= link_to "ブックマークを外す", review_bookmarks_path(review), method: :delete, remote: :true, class: "text-decoration-none text-dark" %>
 <% else %>
-  <%= link_to "ブックマークする", review_bookmarks_path(review), method: :post, class: "text-decoration-none text-dark" %>
+  <%= link_to "ブックマークする", review_bookmarks_path(review), method: :post, remote: :true, class: "text-decoration-none text-dark" %>
 <% end %>
+
+<!--非同期通信のため、（, remote: :true）を追加-->

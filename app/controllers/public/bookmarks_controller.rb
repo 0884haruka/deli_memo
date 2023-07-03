@@ -11,22 +11,22 @@ class Public::BookmarksController < ApplicationController
   def create
     @review = Review.find(params[:review_id])
     bookmark = @review.bookmarks.new(member_id: current_member.id)
-    if bookmark.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
+    bookmark.save
+      #redirect_to request.referer 非同期通信でコメントアウト
+    #else
+      #redirect_to request.referer
+    #end
   end
 
   def destroy
     @review = Review.find(params[:review_id])
     bookmark = @review.bookmarks.find_by(member_id: current_member.id)
-    if bookmark.present?
-        bookmark.destroy
-        redirect_to request.referer
-    else
-        redirect_to request.referer
-    end
+    #if bookmark.present? 非同期通信でコメントアウト
+    bookmark.destroy
+    #     redirect_to request.referer
+    # else
+    #     redirect_to request.referer
+    # end
   end
 
 end
