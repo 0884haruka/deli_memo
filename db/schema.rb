@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 2023_06_22_110321) do
     t.boolean "is_active", default: true, null: false
     t.integer "prefecture", default: 0, null: false
     t.integer "food_category", default: 0, null: false
+    t.text "explanation"
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
