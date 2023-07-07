@@ -29,8 +29,8 @@
           </div>
         </td>
         <td>
-          <div id ="following">
-            <%= render 'following', member: @member %>
+          <div id ="following_<%= @member.id %>">
+            <%= render partial: "following", locals: { member: @member } %>
           </div>
           </td><!--フォロー-->
         <td>
