@@ -2,13 +2,13 @@ class Public::RelationshipsController < ApplicationController
    # フォローするとき
   def create
     current_member.follow(params[:member_id])
-    @member = current_member
+    @member = Member.find(params[:member_id])
     #redirect_to request.referer 非同期通信でコメントアウト
   end
   # フォロー外すとき
   def destroy
     current_member.unfollow(params[:member_id])
-    @member = current_member
+    @member = Member.find(params[:member_id])
     #redirect_to request.referer 非同期通信でコメントアウト
   end
   # フォロー一覧
