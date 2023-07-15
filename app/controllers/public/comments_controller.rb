@@ -6,6 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment.review_id = @review.id
     flash[:alert] = "コメントが空です!!" unless @comment.save!
     #redirect_to request.referer　非同期通信するためリダイレクト先削除
+  
   end
 
   def destroy

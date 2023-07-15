@@ -37,12 +37,12 @@
           <div id = "like_<%= @review.id %>">
             <%= render partial: "like", locals: { review: @review } %>
           </div>
-        </td><!--いいね非同期通信 showページはidなくてもいい-->
+        </td><!--いいね-->
         <td>
           <div id ="bookmark">
             <%= render 'bookmark', review: @review %>
           </div>
-        </td><!--ブックマーク非同期にしたい。。-->
+        </td><!--ブックマーク-->
       </tr>
       <tr>
         <th class = "col-2">商品名</th>

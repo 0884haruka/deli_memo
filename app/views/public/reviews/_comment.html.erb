@@ -12,8 +12,6 @@
         <span id ="comment_delete">
           <% if comment.member == current_member %>
             <%= link_to "削除", review_comment_path(review, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, remote: true, class: "btn btn-outline-danger btn-sm" %>
-            <%#= link_to "削除", review_comment_path(review, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, remote: true, class: "btn btn-outline-danger btn-sm comment-delete-link" %>
-
           <% end %>
         </span>
       </div>
