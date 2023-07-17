@@ -16,78 +16,77 @@
     <!-- right container start  -->
     <div class="col-md-9">
       <table class="table table-hover mt-5">
-    <!--<table class="table table-hover">どちらにしようか考え中-->
-      <tr>
-        <th>投稿者</th>
-        <td>
-          <!--投稿者のページへ遷移させたい-->
-          <div class="text-center">
-            <%=link_to mypage_path(@review.member.id), class: "text-decoration-none text-dark"  do %>
-              <%= image_tag @review.member.get_profile_image(100,100) %><br />
-               <i class="far fa-user text-danger"></i><%= @review.member.nick_name %>さんの投稿ページ
+        <tr>
+          <th>投稿者</th>
+          <td>
+            <!--投稿者のページへ遷移させたい-->
+            <div class="text-center">
+              <%=link_to mypage_path(@review.member.id), class: "text-decoration-none text-dark"  do %>
+                <%= image_tag @review.member.get_profile_image(100,100) %><br />
+                 <i class="far fa-user text-danger"></i><%= @review.member.nick_name %>さんの投稿ページ
+              <% end %>
+            </div>
+          </td>
+          <td>
+            <div id ="following_<%= @member.id %>">
+              <%= render partial: "following", locals: { member: @member } %>
+            </div>
+            </td><!--フォロー-->
+          <td>
+            <div id = "like_<%= @review.id %>">
+              <%= render partial: "like", locals: { review: @review } %>
+            </div>
+          </td><!--いいね-->
+          <td>
+            <div id ="bookmark">
+              <%= render 'bookmark', review: @review %>
+            </div>
+          </td><!--ブックマーク-->
+        </tr>
+        <tr>
+          <th class = "col-2">商品名</th>
+          <td colspan ="4"><%= @review.title %></td>
+        </tr>
+        <tr>
+          <th>レビュー内容</th>
+          <td colspan ="4"><%= @review.body %></td>
+        </tr>
+        <tr>
+          <th>お値段（税込）</th>
+          <td><%= @review.price%>円</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>地域</th>
+          <td><%= @review.prefecture %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>食品カテゴリー</th>
+          <td><%= @review.food_category%></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>掲載の有</th>
+          <td>
+            <% if @review.is_active == true %>
+              掲載
             <% end %>
-          </div>
-        </td>
-        <td>
-          <div id ="following_<%= @member.id %>">
-            <%= render partial: "following", locals: { member: @member } %>
-          </div>
-          </td><!--フォロー-->
-        <td>
-          <div id = "like_<%= @review.id %>">
-            <%= render partial: "like", locals: { review: @review } %>
-          </div>
-        </td><!--いいね-->
-        <td>
-          <div id ="bookmark">
-            <%= render 'bookmark', review: @review %>
-          </div>
-        </td><!--ブックマーク-->
-      </tr>
-      <tr>
-        <th class = "col-2">商品名</th>
-        <td colspan ="4"><%= @review.title %></td>
-      </tr>
-      <tr>
-        <th>レビュー内容</th>
-        <td colspan ="4"><%= @review.body %></td>
-      </tr>
-      <tr>
-        <th>お値段（税込）</th>
-        <td><%= @review.price%>円</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>地域</th>
-        <td><%= @review.prefecture %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>食品カテゴリー</th>
-        <td><%= @review.food_category%></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>掲載の有</th>
-        <td>
-          <% if @review.is_active == true %>
-            掲載
-          <% end %>
-          <% if @review.is_active == false %>
-            未掲載
-          <% end %>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
+            <% if @review.is_active == false %>
+              未掲載
+            <% end %>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
     </div>
     <!-- right container end -->
 
